@@ -1,0 +1,103 @@
+:root {
+  --CoreWhite: #ffffff;
+  --CoreDBlue: #164195;
+  --CoreDOrange: #eb934e;
+  --CoreSBlue: #a5b0db ;
+  --CoreSGrey: #d9def0;
+  --CoreSSGrey: #f9f9fb;
+  --CoreSOrange: #f9d3b7;
+  --CoreMBlue: #5E79B8;
+  --CoreMElectric: #1986bf;
+}
+
+html,body{
+	height:100%;
+	font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+	background-color: var(--CoreWhite);
+	background-size: cover;
+}
+.cpage {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width:80%;
+  height:80% ;
+}
+.container:after {
+  display: block;
+  content: " placeholder ";
+  margin: 10px;
+  flex: 999 999 auto;
+}
+.incpage {
+  flex: 0 0 auto;
+  margin: 10px;
+  
+}
+
+#incpagelanding{
+	background-color: var(--CoreMBlue);
+}
+
+a {
+	text-decoration: none;
+    line-height: inherit;
+}
+
+button {
+	padding:0,5%;
+	width:20%;
+	height:20%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	background-color: var(--CoreDBlue);
+	border: 2px solid var(--CoreDBlue);
+ 	border-radius:2px;
+ 	box-shadow: 2px 2px 10px var(--CoreSBlue);
+}
+
+div{ 
+	background-color: var(--CoreSBlue);
+
+}
+
+
+h1, h2, h3, h4, span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: var(--CoreDBlue);
+}
+
+input{
+	background-color: var(--CoreMBlue);
+	border: 2px solid var(--CoreDBlue);
+ 	border-radius:2px;
+ 	box-shadow: 2px 2px 10px var(--CoreSBlue);
+}
+
+p{
+
+}
+
+span{
+	font-size: 40px;
+
+}
+
+ol{
+	color: var(--CoreDBlue);
+}
+
+ul{
+	color: var(--CoreDBlue);
+}
+li{
+
+}
+strong{
+	color: var(--CoreMElectric);
+}
