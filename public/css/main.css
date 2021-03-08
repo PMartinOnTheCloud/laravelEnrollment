@@ -60,6 +60,10 @@ nav > ul > li > a > .fas {
     border-radius: 5px;
 }
 
+nav > ul > li > a  {
+    color: var(--CoreDBlue);
+}
+
 .logo {
     float: left;
 }

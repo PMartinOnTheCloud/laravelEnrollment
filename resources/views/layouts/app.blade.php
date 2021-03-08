@@ -44,12 +44,12 @@
             <h2>Menú</h2>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="dashboard">
                         <i class="fas fa-tachometer-alt"></i> Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="courses">
                         <i class="fas fa-toolbox"></i> Cursos
                     </a>
                 </li>

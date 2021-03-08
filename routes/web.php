@@ -31,6 +31,12 @@ Route::name('admin')
         }
     });
 
+    Route::get('/courses', function() {
+        if(Auth::check()) {
+            return view('/admin/courses', ['userLogged' => Auth::user()]);
+        }
+    });
+
     Route::resource('users', 'UserController');
 });
 
