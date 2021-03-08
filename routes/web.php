@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    if(Auth::check()) {
-        return view('welcome');
-    }
+    return view('welcome');
 });
 
 Auth::routes();
