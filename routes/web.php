@@ -20,4 +20,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::name('admin')
+  ->prefix('admin')
+  ->middleware(['auth', 'can:accessAdmin'])
+  ->group(function () {
+
+    Route::get('/admin/dashboard', function() {
+        return view('/admin/dashboard');
+    });
+
+    Route::resource('users', 'UserController');
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
