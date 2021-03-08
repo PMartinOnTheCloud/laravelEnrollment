@@ -32,7 +32,7 @@ class AuthServiceProvider extends ServiceProvider
        });   // Gate checks if the user is registered
        // Gate checks if the user is an admin
        Gate::define('accessAlumne', function($user) {
-          return $user->hasRole(['alumne']);
+          return $user->hasRole(['alumn']);
        });   // Gate checks if the user is alumne
     }
 }

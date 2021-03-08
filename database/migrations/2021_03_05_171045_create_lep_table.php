@@ -18,7 +18,8 @@ class CreateLepTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('role',['admin','alumn']);
+            $table->enum('role',['admin','alumn'])->default('alumn');
+            $table->timestamps();
         });
 
 
@@ -92,7 +93,8 @@ class CreateLepTable extends Migration
 
         Schema::create('requirements', function (Blueprint $table) {
             $table->id();
-            $table->foreign('profile_id')->references('id')->on('profile_req');
+            $table->unsignedBigInteger('profile_id');
+            $table->foreign('profile_id')->references('id')->on('profile_reqs');
             $table->string('name');
         });
 
@@ -118,7 +120,7 @@ class CreateLepTable extends Migration
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('req_enrol_id');
-            $table->foreign('req_enrol_id')->references('id')->on('req_enrol');
+            $table->foreign('req_enrol_id')->references('id')->on('req_enrols');
             $table->binary('data')->nullable();
         });
 
@@ -142,18 +144,20 @@ class CreateLepTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
-        Schema::drop('terms');
-        Schema::drop('careers');
-        Schema::drop('mps');
-        Schema::drop('ufs');
-        Schema::drop('enrolments');
-        Schema::drop('records');
-        Schema::drop('profile_req');
-        Schema::drop('requirements');
-        Schema::drop('req_enrol');
-        Schema::drop('enrolments_ufs');
-        Schema::drop('uploads');
+
         Schema::drop('logs');
+        Schema::drop('uploads');
+        Schema::drop('enrolment_ufs');
+        Schema::drop('req_enrols');
+        Schema::drop('requirements');
+        Schema::drop('profile_reqs');
+        Schema::drop('records');
+        Schema::drop('enrolments');
+        Schema::drop('ufs');
+        Schema::drop('mps');
+        Schema::drop('careers');
+        Schema::drop('terms');
+        Schema::drop('users');
+
     }
 }

@@ -25,8 +25,20 @@ Route::name('admin')
   ->middleware(['auth', 'can:accessAdmin'])
   ->group(function () {
 
-    Route::get('/admin/dashboard', function() {
+    Route::get('/dashboard', function() {
         return view('/admin/dashboard');
+    });
+
+    Route::resource('users', 'UserController');
+});
+
+Route::name('student')
+  ->prefix('student')
+  ->middleware(['auth', 'can:accessAlumne'])
+  ->group(function () {
+
+    Route::get('/dashboard', function() {
+        return view('/student/dashboard');
     });
 
     Route::resource('users', 'UserController');
