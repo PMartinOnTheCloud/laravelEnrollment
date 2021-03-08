@@ -15,11 +15,33 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    if(Auth::check()) {
-        return view('welcome');
-    }
+    return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
+
+Route::name('admin')
+  ->prefix('admin')
+  ->middleware(['auth', 'can:accessAdmin'])
+  ->group(function () {
+
+    Route::get('/dashboard', function() {
+        return view('/admin/dashboard');
+    });
+
+    Route::resource('users', 'UserController');
+});
+
+Route::name('student')
+  ->prefix('student')
+  ->middleware(['auth', 'can:accessAlumne'])
+  ->group(function () {
+
+    Route::get('/dashboard', function() {
+        return view('/student/dashboard');
+    });
+
+    Route::resource('users', 'UserController');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

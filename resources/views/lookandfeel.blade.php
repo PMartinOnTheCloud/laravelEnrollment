@@ -2,8 +2,9 @@
 <html>
 <head>
 	<title>Look&feel</title>
-	<link rel="stylesheet" type="text/css" href="main.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../css/main.css" media="screen" />
 </head>
+@include('header')
 <body>
 
 	<div id="centerpage" class="cpage">
