@@ -26,7 +26,9 @@ Route::name('admin')
   ->group(function () {
 
     Route::get('/dashboard', function() {
-        return view('/admin/dashboard');
+        if(Auth::check()) {
+            return view('/admin/dashboard', ['userLogged' => Auth::user()]);
+        }
     });
 
     Route::resource('users', 'UserController');
