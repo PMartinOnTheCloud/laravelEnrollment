@@ -10,12 +10,28 @@
   --CoreMElectric: #1986bf;
 }
 
+
+
+@media (min-width:320px ) and (max-width:480px){
+  html,body{
+  height:70%;
+  width: 70%;
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  font-size: 70%
+  background-color: var(--CoreWhite);
+  background-size: cover;
+}
+}
+
 html,body{
 	height:100%;
+  width: 100%;
 	font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  font-size:100%;
 	background-color: var(--CoreWhite);
 	background-size: cover;
 }
+
 .cpage {
   display: flex;
   flex-wrap: wrap;
@@ -28,7 +44,7 @@ html,body{
 }
 .container:after {
   display: block;
-  content: " placeholder ";
+  
   margin: 10px;
   flex: 999 999 auto;
 }
@@ -38,13 +54,45 @@ html,body{
   
 }
 
+.logo{
+
+}
+
 #incpagelanding{
 	background-color: var(--CoreMBlue);
 }
 
 a {
 	text-decoration: none;
-    line-height: inherit;
+  line-height: inherit;
+  border:2px solid var(--CoreDBlue);
+  background-color: var(--CoreDBlue);
+  color: var(--CoreWhite);
+  font-weight: bold;
+}
+a:hover {
+  text-decoration: none;
+  line-height: inherit;
+  border:2px solid var(--CoreDBlue);
+  background-color: var(--CoreDBlue);
+  color: var(--CoreWhite);
+  font-weight: bold;
+}
+a:active {
+  text-decoration: none;
+  line-height: inherit;
+  border:2px solid var(--CoreSOrange);
+  background-color: var(--CoreSOrange);
+  color: var(--CoreWhite);
+  font-weight: bold;
+}
+a:visited {
+  text-decoration: none;
+  line-height: inherit;
+  border:2px solid var(--CoreMElectric);
+  background-color: var(--CoreMElectric);
+  color: var(--CoreWhite);
+  font-weight: bold;
 }
 
 button {
@@ -62,6 +110,7 @@ button {
 
 div{ 
 	background-color: var(--CoreSBlue);
+  display: flex;
 
 }
 
@@ -77,10 +126,6 @@ input{
 	border: 2px solid var(--CoreDBlue);
  	border-radius:2px;
  	box-shadow: 2px 2px 10px var(--CoreSBlue);
-}
-
-p{
-
 }
 
 span{
@@ -100,4 +145,16 @@ li{
 }
 strong{
 	color: var(--CoreMElectric);
+}
+p {
+  font-size:0.9em;
+}
+h1 {
+  font-size:2em;
+}
+h2 {
+  font-size:1.4em;
+}
+span{
+  font-size:1.2em;
 }
