@@ -6,6 +6,6 @@ use App\Models\Term;
 class TermController extends Controller
 {
     public function getTerms() {
-        return response()->json(['terms'=>Term::get()], 200);
+        return response()->json(Term::all());
     }
 }
