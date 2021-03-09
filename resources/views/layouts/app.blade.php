@@ -11,6 +11,7 @@
         <title>@yield('title') - IES Matriculación</title>
 
         <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
@@ -35,22 +36,26 @@
 
         <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/74ec47558a.js" crossorigin="anonymous"></script>
+
+        <!-- Boostrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     </head>
     <body>
         <header>
             <div class="logo">
-                <img src="{{ asset('images/esteve.jpeg') }}" draggable="true">
+                <img src="{{ asset('images/esteve-logo.png') }}" draggable="true">
                 <span>Instituto Esteve Terradas I Illa</span>
             </div>
             @unless (Auth::check())
-                <i class="fa fa-key" aria-hidden="true"></i> Invitad@
+                <div class="username">
+                    <i class="fa fa-key" aria-hidden="true"></i> Invitad@
+                </div>
             @else
                 <div class="username">
                     <i class="far fa-user"></i> {{ $userLogged['name'] }} <span style="margin-left: 10px; margin-right: 10px;">|</span> <i class="fas fa-sign-out-alt" style="color: #FC3232;"></i>
                 </div>
             @endunless
         </header>
-
 
         <nav>
             @if(Auth::check())

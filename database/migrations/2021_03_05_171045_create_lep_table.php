@@ -25,11 +25,11 @@ class CreateLepTable extends Migration
 
         Schema::create('terms', function (Blueprint $table) {
             $table->id();
-            $table->date('start');
-            $table->date('end');
             $table->string('name');
             $table->text('description');
             $table->boolean('active');
+            $table->date('start');
+            $table->date('end');
         });
 
 
