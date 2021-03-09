@@ -11,13 +11,13 @@
         <div class="cpage" id="">
             <div class="incpage" id="">
                 <h3 id="incpagelanding">Proyecto de Matriculación</h3>
-                <img src="images/esteve.jpeg"/>
+                <img src="{{ asset('images/esteve-grande.png') }}"/>
             </div>
             <div class="incpage" id="incpagelanding">
                 <p>El proyecto de matriculación consiste en una aplicación de matriculación de alumnos de FP Superior que permitirá agilizar y facilitar el proceso de matricular alumnos.</p>
 
             </div>
-            <a href="{{ url('/resources/views/auth/login') }}">Login</a>
+            <a href="{{ url('/login') }}">Login</a>
         </div>
     </body>
 </html>
