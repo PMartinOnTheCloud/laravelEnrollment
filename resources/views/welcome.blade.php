@@ -11,7 +11,7 @@
         <div class="cpage" id="">
             <div class="incpage" id="">
                 <h3 id="incpagelanding">Proyecto de Matriculación</h3>
-                <img src="{{ asset('images/esteve-grande.png') }}"/>
+                <img src="{{ asset('images/esteve-normal.png') }}"/>
             </div>
             <div class="incpage" id="incpagelanding">
                 <p>El proyecto de matriculación consiste en una aplicación de matriculación de alumnos de FP Superior que permitirá agilizar y facilitar el proceso de matricular alumnos.</p>
