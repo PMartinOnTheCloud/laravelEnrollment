@@ -51,7 +51,7 @@ header {
 
 header div.username {
     float: right;
-    padding: 7px;
+    padding: 4px;
 }
 
 nav {
@@ -59,7 +59,6 @@ nav {
     width: calc(100% - 83%);
     height: 100vh;
     float: left;
-    padding: 15px;
     box-sizing: border-box;
 }
 
@@ -264,7 +263,7 @@ footer {
 }
 
 footer > p {
-    padding: 8px;
+    padding: 5px;
     text-align: center;
 }
 
