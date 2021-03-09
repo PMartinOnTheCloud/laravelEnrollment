@@ -54,3 +54,6 @@ Route::name('student')
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Route::get('/resources/views/auth/login', ['uses' => 'HomeController@index', 'as' => 'login']);

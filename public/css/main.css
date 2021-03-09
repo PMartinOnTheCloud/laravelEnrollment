@@ -14,15 +14,24 @@
   --CoreMElectric: #1986bf;
 }
 
-
+@media (min-width:720px ) and (max-width:1080px){
+  html,body{
+  height:80%;
+  width: 80%;
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  font-size: 80%
+  background-color: var(--CoreWhite);
+  background-size: cover;
+}
+}
 
 
 @media (min-width:320px ) and (max-width:480px){
   html,body{
-  height:70%;
-  width: 70%;
+  height:60%;
+  width: 60%;
   font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
-  font-size: 70%
+  font-size: 60%
   background-color: var(--CoreWhite);
   background-size: cover;
 }
