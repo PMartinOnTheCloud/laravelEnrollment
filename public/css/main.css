@@ -113,17 +113,38 @@ div.content {
 .cpage {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
+  position: center;
   justify-content: center;
   align-items: center;
   align-content: center;
   width:80%;
   height:80% ;
+  order:2;
+}
+
+.lateralizq{
+  width:10%;
+  background-color: var(--CoreWhite);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  order:1;
+}
+
+.lateraldere{
+  width: 10%;
+
+  background-color: var(--CoreWhite);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  order:3;
 }
 
 .container:after {
   display: block;
-  
+
   margin: 10px;
   flex: 999 999 auto;
 }
@@ -210,7 +231,7 @@ button {
 }
 
 
-div{ 
+div{
 	background-color: var(--CoreSBlue);
   display: flex;
 
@@ -270,4 +291,26 @@ footer {
 footer > p {
     padding: 5px;
     text-align: center;
+}
+
+
+body#landing {
+  margin: 0;
+}
+
+body#landing > div#main_landing {
+  text-align: center
+}
+
+
+body#landing > div#main_landing > img#banner_landing {
+  display: block;
+  margin-top: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body#landing > div#main_landing > a#login_landing {
+  text-decoration: none;
+  margin-top: 10vh;
 }
