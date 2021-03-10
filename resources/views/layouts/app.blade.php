@@ -48,6 +48,7 @@
         <nav>
             @if(Auth::check())
             <h2>Menú</h2>
+            @if(Auth::user()->role == 'admin')
             <ul>
                 <li>
                     <a href="dashboard">
@@ -65,6 +66,17 @@
                     </a>
                 </li>
             </ul>
+            @endif
+
+            @if(Auth::user()->role == 'alumn')
+            <ul>
+                <li>
+                    <a href="dashboard">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+            </ul>
+            @endif
             @endif
         </nav>
 
