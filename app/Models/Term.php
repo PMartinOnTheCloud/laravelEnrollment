@@ -12,6 +12,8 @@ class Term extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description', 'active'];
+
     public function enrolments() {
         return $this->hasMany(Enrolment::class);
     }
@@ -19,5 +21,4 @@ class Term extends Model
     public function careers() {
         return $this->hasMany(Career::class);
     }
-
 }

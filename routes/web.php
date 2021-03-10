@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
 Route::name('admin')
   ->prefix('admin')
@@ -33,7 +34,7 @@ Route::name('admin')
 
     Route::get('/courses', function() {
         if(Auth::check()) {
-            return view('/admin/courses', ['userLogged' => Auth::user()]);
+            return view('/admin/courses', ['userLogged' => Auth::user(), 'terms' => [App\Http\Controllers\TermController::class, 'getTerms']]);
         }
     });
 
@@ -53,3 +54,6 @@ Route::name('student')
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Route::get('/resources/views/auth/login', ['uses' => 'HomeController@index', 'as' => 'login']);
