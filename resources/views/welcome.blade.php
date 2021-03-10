@@ -8,6 +8,7 @@
 	    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     </head>
     <body>
+        <div class="lateralizq"></div>
         <div class="cpage" id="">
             <div class="incpage" id="">
                 <h3 id="incpagelanding">Proyecto de Matriculación</h3>
@@ -19,5 +20,6 @@
             </div>
             <a href="{{ url('/login') }}">Login</a>
         </div>
+        <div class="lateraldere"></div>
     </body>
 </html>
