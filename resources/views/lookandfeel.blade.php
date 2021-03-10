@@ -1,4 +1,4 @@
-zsyfgzdugfxfuxdyf<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Look&feel</title>
