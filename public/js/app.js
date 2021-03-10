@@ -6,6 +6,8 @@ function getTerms() {
 
 function showDataInTable(params, data, elementToInsert) {
 
+    $(elementToInsert).html('');
+
     $(elementToInsert).append('<table class="table"><thead class="thead-light"><tr></tr></thead></table>');
 
     for(let elementHeader in params) {

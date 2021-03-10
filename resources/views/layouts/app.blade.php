@@ -39,7 +39,8 @@
                 </div>
             @else
                 <div class="username">
-                    <i class="far fa-user"></i> {{ $userLogged['name'] }} <span style="margin-left: 10px; margin-right: 10px;">|</span> <i class="fas fa-sign-out-alt" style="color: #FC3232;"></i>
+                    <i class="far fa-user"></i> {{ Auth::user()->name }} <span style="margin-left: 10px; margin-right: 10px;">|</span>
+                    <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt" style="color: #FC3232;"></i></a>
                 </div>
             @endunless
         </header>

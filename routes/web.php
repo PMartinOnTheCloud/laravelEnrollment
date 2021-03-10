@@ -28,13 +28,13 @@ Route::name('admin')
 
     Route::get('/dashboard', function() {
         if(Auth::check()) {
-            return view('/admin/dashboard', ['userLogged' => Auth::user()]);
+            return view('/admin/dashboard');
         }
     });
 
     Route::get('/courses', function() {
         if(Auth::check()) {
-            return view('/admin/courses', ['userLogged' => Auth::user(), 'terms' => [App\Http\Controllers\TermController::class, 'getTerms']]);
+            return view('/admin/courses', ['terms' => [App\Http\Controllers\TermController::class, 'getTerms']]);
         }
     });
 
@@ -53,7 +53,7 @@ Route::name('student')
     Route::resource('users', 'UserController');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 //Route::get('/resources/views/auth/login', ['uses' => 'HomeController@index', 'as' => 'login']);
