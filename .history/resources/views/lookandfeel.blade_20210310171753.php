@@ -1,4 +1,4 @@
-zsyfgzdugfxfuxdyf<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Look&feel</title>
@@ -29,10 +29,10 @@ zsyfgzdugfxfuxdyf<!DOCTYPE html>
 			<li></li>
 		</ul>
 
-
-
-
-
+		
+		
+		
+		
 	</div>
 
 
