@@ -20,7 +20,7 @@
 
         <script>
         document.addEventListener("DOMContentLoaded", function() {
-            $.get("/api/terms/getterms", function(data) {
+            $.get("/api/terms/show", function(data) {
                 showDataInTable({'name': 'Nombre', 'description': 'Descripción', 'start': 'Fecha de comienzo', 'end': 'Fecha de finalización'}, data, '.terms-info');
                 $('button[disabled]').removeAttr('disabled');
             });

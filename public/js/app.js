@@ -1,8 +1,3 @@
-function getTerms() {
-    $.get("/api/terms/getterms", function(data) {
-        return data;
-    });
-}
 
 function showDataInTable(params, data, elementToInsert) {
 
