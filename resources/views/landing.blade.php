@@ -9,6 +9,7 @@
 	<body id="landing">
 		<div id="main_landing">
 			<img id="banner_landing" src="{{ asset('images/esteveterradasbanner_landing.jpg') }}">
+			<p>El proyecto de matriculación consiste en una aplicación de matriculación de alumnos de FP Superior que permitirá agilizar y facilitar el proceso de matricular alumnos.</p>
 			<a href="/login" id="login_landing">Iniciar Sesión</a>
 		</div>
 	</body>
