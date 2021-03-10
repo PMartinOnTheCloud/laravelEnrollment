@@ -10,20 +10,6 @@
 
         <button type="button" class="btn btn-primary btn-sm" style="width: 10%;" disabled>Editar</button>
 
-        <!--<table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>-->
-
         <div class="terms-info row">
             <div class="d-flex justify-content-center">
                 <div class="spinner-border" role="status">
