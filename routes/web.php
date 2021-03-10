@@ -19,6 +19,13 @@ Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('home', function() {
+    if (auth()->user()->role == 'admin') {
+        return redirect('/admin/dashboard');
+    }
+    redirect('/student/dashboard');
+})->middleware(['auth']);
+
 Auth::routes(['register' => true]);
 
 Route::name('admin')
