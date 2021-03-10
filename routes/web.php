@@ -26,7 +26,7 @@ Route::get('home', function() {
     return redirect('/student/dashboard');
 })->middleware(['auth']);
 
-Auth::routes(['register' => true]);
+Auth::routes(['register' => false]);
 
 Route::name('admin')
   ->prefix('admin')
