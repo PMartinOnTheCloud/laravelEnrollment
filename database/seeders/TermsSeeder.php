@@ -4,7 +4,7 @@ namespace Database\Seeders;
 use App\Models\Term;
 use Illuminate\Database\Seeder;
 
-class TermsTableSeeder extends Seeder
+class TermsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,12 +20,12 @@ class TermsTableSeeder extends Seeder
 
         // And now, let's create a few articles in our database:
         for ($i = 0; $i < 50; $i++) {
-            Term::create([
-                'start' => $faker->date,
-                'end' => $faker->date,
+            DB::table('terms')->insert([
                 'name' => $faker->sentence,
                 'description' => $faker->paragraph,
-                'active' => mt_rand(0, 1)
+                'active' => mt_rand(0, 1),
+                'start' => $faker->date,
+                'end' => $faker->date
             ]);
         }
     }

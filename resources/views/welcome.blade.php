@@ -17,7 +17,7 @@
                 <p>El proyecto de matriculación consiste en una aplicación de matriculación de alumnos de FP Superior que permitirá agilizar y facilitar el proceso de matricular alumnos.</p>
 
             </div>
-            <a href="{{ url('/resources/views/auth/login') }}">Login</a>
+            <a href="{{ asset('/login') }}">Login</a>
         </div>
     </body>
 </html>
