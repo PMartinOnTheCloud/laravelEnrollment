@@ -25,7 +25,6 @@
 }
 }
 
-
 @media (min-width:320px ) and (max-width:480px){
   html,body{
   height:60%;
@@ -47,9 +46,6 @@ html,body{
 	background-color: var(--CoreWhite);
 	background-size: cover;
 }
-
-
-
 
 header {
     background: #23282d;
@@ -275,4 +271,3 @@ footer > p {
     padding: 5px;
     text-align: center;
 }
-
