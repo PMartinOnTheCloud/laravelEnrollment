@@ -31,6 +31,7 @@ class CreateLepTable extends Migration
             $table->boolean('active');
             $table->date('start');
             $table->date('end');
+            $table->timestamps();
         });
 
 

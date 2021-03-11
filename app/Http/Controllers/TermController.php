@@ -17,17 +17,6 @@ class TermController extends Controller
         }
         return response()->json($data);
     }
-/*
-    public function getTerm($id) {
-        if (Term::where('id', $id)->exists()) {
-            $book = Term::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($book, 200);
-        } else {
-            return response()->json([
-              "message" => "El curso no se ha encontrado."
-            ], 404);
-        }
-    }
 
     public function create(Request $request) {
         $term = new Term;
@@ -42,26 +31,25 @@ class TermController extends Controller
         ], 201);
     }
 
-    public function update(Request $request, $id) {
-        if(Term::where('id', $id)->exists()) {
-            $term = Term::find($id);
+    public function update(Request $request, Term $term) {
+        $data = ['status' => '403'];
+        $token = $request->header('token');
+        if(!empty($token)) {
+            $user = User::select("token")->where('token', $token)->get()[0];
+            if($user['token']) {
+                $term->name = $request->name;
+                $term->description = $request->desc;
+                $term->start = $request->start;
+                $term->end = $request->end;
+                $term->updated_at = $request->updated;
 
-            $term->name = is_null($request->name) ? $request->name : $term->name;
-            $term->description = is_null($request->description) ? $request->description : $term->description;
-            $term->active = is_null($request->active) ? $request->active : $term->active;
-            $term->start = is_null($request->start) ? $request->start : $term->start;
-            $term->end = is_null($request->end) ? $request->end : $term->end;
-
-            $term->save();
-
-            return response()->json([
-              "message" => "El curso se ha guardado."
-            ], 200);
-        } else {
-            return response()->json([
-              "message" => "El curso no se ha encontrado."
-            ], 404);
+                if($term->save()) {
+                    $data = ['status' => '200', 'message' => 'El curso se ha actualizado.'];
+                }
+            }
         }
+
+        return response()->json($data);
     }
 
     public function delete($id) {
@@ -78,5 +66,5 @@ class TermController extends Controller
               "message" => "El curso no se ha encontrado."
             ], 404);
         }
-    }*/
+    }
 }

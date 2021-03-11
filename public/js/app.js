@@ -19,7 +19,7 @@ function showDataInTable(params, data, elementToInsert) {
             }
         }
 
-        $('tr#item-'+ idItem).append('<td><form id="itemForm-'+ idItem +'"><div class="btn-group" role="group" aria-label="Actions"><button id="addButton-'+ idItem +'" style="display: none;" title="Guardar" type="button" class="btn btn-success" onclick="changeInputToEdit(\'item-'+ idItem +'\'); changeStatusButton([\'#deleteButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\',\'#addButton-'+ idItem +'\']); changeLoadingOfButton(this.element);"><i class="fas fa-check"></i></button><button id="cancelButton-'+ idItem +'" style="display: none;" title="Cancelar" type="reset" class="btn btn-secondary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); showButton([\'#editButton-'+ idItem +'\']); hideButton([\'#addButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-times"></i></button><button id="editButton-'+ idItem +'" title="Editar" type="button" class="btn btn-primary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); hideButton([\'#editButton-'+ idItem +'\']); showButton([\'#addButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-edit"></i></button><button id="deleteButton-'+ idItem +'" title="Eliminar" type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></form>');
+        $('tr#item-'+ idItem).append('<td><form id="itemForm-'+ idItem +'"><div class="btn-group" role="group" aria-label="Actions"><button id="saveButton-'+ idItem +'" style="display: none;" title="Guardar" type="button" class="btn btn-success" onclick="changeInputToEdit(\'item-'+ idItem +'\'); changeStatusButton([\'#deleteButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\',\'#saveButton-'+ idItem +'\']); changeLoadingOfButton(this); updateObject(\'terms\', '+idItem+');"><i class="fas fa-check"></i></button><button id="cancelButton-'+ idItem +'" style="display: none;" title="Cancelar" type="reset" class="btn btn-secondary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); showButton([\'#editButton-'+ idItem +'\']); hideButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-times"></i></button><button id="editButton-'+ idItem +'" title="Editar" type="button" class="btn btn-primary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); hideButton([\'#editButton-'+ idItem +'\']); showButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-edit"></i></button><button id="deleteButton-'+ idItem +'" title="Eliminar" type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></form>');
     }
 }
 
@@ -61,23 +61,21 @@ function changeStatusButton(buttonsElement) {
 }
 
 function changeLoadingOfButton(elementButton, icon='<i class="fas fa-check"></i>') {
-    if() {
+    if($(elementButton).has(icon)) {
         $(elementButton).html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>');
-    } else {
-        $(elementButton).html(icon);
     }
 }
 
 function updateObject(object, id, params) {
     $.ajax({
         url: '/api/'+object+'/update/'+id+'',
-        method: 'POST',
+        method: 'PUT',
         headers: {
             token: $("meta[name='_token']").attr("content"),
         },
         data: params,
         success: (data) => {
-
+            $('#saveButton-'+id).html('<i class="fas fa-check"></i>');
         }
     });
 }
