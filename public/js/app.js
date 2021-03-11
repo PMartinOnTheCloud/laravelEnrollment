@@ -1,10 +1,7 @@
-function getTerms() {
-    $.get("/api/terms/getterms", function(data) {
-        return data;
-    });
-}
 
 function showDataInTable(params, data, elementToInsert) {
+
+    $(elementToInsert).html('');
 
     $(elementToInsert).append('<table class="table"><thead class="thead-light"><tr></tr></thead></table>');
 

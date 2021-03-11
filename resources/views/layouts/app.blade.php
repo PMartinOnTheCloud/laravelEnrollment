@@ -18,21 +18,8 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <!-- Styles -->
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
         <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/74ec47558a.js" crossorigin="anonymous"></script>
@@ -52,7 +39,8 @@
                 </div>
             @else
                 <div class="username">
-                    <i class="far fa-user"></i> {{ $userLogged['name'] }} <span style="margin-left: 10px; margin-right: 10px;">|</span> <i class="fas fa-sign-out-alt" style="color: #FC3232;"></i>
+                    <i class="far fa-user"></i> {{ Auth::user()->name }} <span style="margin-left: 10px; margin-right: 10px;">|</span>
+                    <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt" style="color: #FC3232;"></i></a>
                 </div>
             @endunless
         </header>
@@ -60,6 +48,7 @@
         <nav>
             @if(Auth::check())
             <h2>Menú</h2>
+            @if(Auth::user()->role == 'admin')
             <ul>
                 <li>
                     <a href="dashboard">
@@ -77,6 +66,17 @@
                     </a>
                 </li>
             </ul>
+            @endif
+
+            @if(Auth::user()->role == 'alumn')
+            <ul>
+                <li>
+                    <a href="dashboard">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+            </ul>
+            @endif
             @endif
         </nav>
 
