@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="/css/main.css">
 
         <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="_token" content="{{ csrf_token() }}">
 
         <title>@yield('title') - IES Matriculación</title>
 
@@ -18,14 +18,14 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-        <!-- Styles -->
-        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-
         <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/74ec47558a.js" crossorigin="anonymous"></script>
 
         <!-- Boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+        <!-- Styles -->
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     </head>
     <body>
         <header>

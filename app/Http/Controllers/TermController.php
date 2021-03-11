@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Term;
+use App\Models\User;
 
 class TermController extends Controller
 {
-    public function show() {
-        return response()->json(Term::all());
+    public function index(Request $request) {
+        $data = ['status' => '403'];
+        $token = $request->header('token');
+        if(!empty($token)) {
+            $user = User::select("token")->where('token', $token)->get()[0];
+            if($user['token'])
+                $data = Term::select("*")->get();
+        }
+        return response()->json($data);
     }
-
+/*
     public function getTerm($id) {
         if (Term::where('id', $id)->exists()) {
             $book = Term::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
@@ -70,5 +78,5 @@ class TermController extends Controller
               "message" => "El curso no se ha encontrado."
             ], 404);
         }
-    }
+    }*/
 }

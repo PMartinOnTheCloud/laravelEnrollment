@@ -164,13 +164,6 @@ button {
  	box-shadow: 2px 2px 10px var(--CoreSBlue);
 }
 
-input {
-	background-color: var(--CoreMBlue);
-	border: 2px solid var(--CoreDBlue);
- 	border-radius:2px;
- 	box-shadow: 2px 2px 10px var(--CoreSBlue);
-}
-
 ol {
 	color: var(--CoreDBlue);
 }
@@ -181,6 +174,10 @@ ul {
 
 li{
 
+}
+
+.hide-element {
+    display: none;
 }
 
 strong{

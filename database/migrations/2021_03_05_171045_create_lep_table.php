@@ -17,6 +17,7 @@ class CreateLepTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('token')->nullable();
             $table->string('password');
             $table->enum('role',['admin','alumn'])->default('alumn');
             $table->timestamps();

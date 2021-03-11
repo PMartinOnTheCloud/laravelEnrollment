@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Eduard',
             'email' => 'eduardsnchez@gmail.com',
+            'token' => '',
             'password' => '$2y$10$94eJ85GSQ3V5y/Zj1V86TOS2CZrLJ7LH2oWNJziwD4wSAi0GCmNVi',
             'role' => 'admin',
             'created_at' => '2021-03-10 11:21:37',
@@ -45,6 +46,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Pablo',
             'email' => 'pablo@gmail.com',
+            'token' => '',
             'password' => '$2y$10$94eJ85GSQ3V5y/Zj1V86TOS2CZrLJ7LH2oWNJziwD4wSAi0GCmNVi',
             'role' => 'alumn',
             'created_at' => '2021-03-10 11:21:37',

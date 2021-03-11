@@ -61,6 +61,3 @@ Route::name('student')
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-
-//Route::get('/resources/views/auth/login', ['uses' => 'HomeController@index', 'as' => 'login']);
