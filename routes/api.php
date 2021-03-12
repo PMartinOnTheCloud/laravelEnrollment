@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TermController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('terms', TermController::class);
+Route::put('terms/update/{id}', 'App\Http\Controllers\TermController@update');
+
+Route::resource('terms', 'App\Http\Controllers\TermController');

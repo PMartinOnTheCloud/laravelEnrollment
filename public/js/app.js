@@ -19,7 +19,9 @@ function showDataInTable(params, data, elementToInsert) {
             }
         }
 
-        $('tr#item-'+ idItem).append('<td><form id="itemForm-'+ idItem +'"><div class="btn-group" role="group" aria-label="Actions"><button id="saveButton-'+ idItem +'" style="display: none;" title="Guardar" type="button" class="btn btn-success" onclick="changeInputToEdit(\'item-'+ idItem +'\'); changeStatusButton([\'#deleteButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\',\'#saveButton-'+ idItem +'\']); changeLoadingOfButton(this); updateObject(\'terms\', '+idItem+');"><i class="fas fa-check"></i></button><button id="cancelButton-'+ idItem +'" style="display: none;" title="Cancelar" type="reset" class="btn btn-secondary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); showButton([\'#editButton-'+ idItem +'\']); hideButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-times"></i></button><button id="editButton-'+ idItem +'" title="Editar" type="button" class="btn btn-primary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); hideButton([\'#editButton-'+ idItem +'\']); showButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-edit"></i></button><button id="deleteButton-'+ idItem +'" title="Eliminar" type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></form>');
+/* changeInputToEdit(\'item-'+ idItem +'\'); changeStatusButton([\'#deleteButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\',\'#saveButton-'+ idItem +'\']); changeLoadingOfButton(this); */
+
+        $('tr#item-'+ idItem).append('<td><form action="#" id="itemForm-'+ idItem +'" onsubmit="updateObject('+ idItem +', \'terms\'); return false;"><div class="btn-group" role="group" aria-label="Actions"><button id="saveButton-'+ idItem +'" style="display: none;" title="Guardar" type="submit" class="btn btn-success"><i class="fas fa-check"></i></button><button id="cancelButton-'+ idItem +'" style="display: none;" title="Cancelar" type="reset" class="btn btn-secondary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); showButton([\'#editButton-'+ idItem +'\']); hideButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-times"></i></button><button id="editButton-'+ idItem +'" title="Editar" type="button" class="btn btn-primary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); hideButton([\'#editButton-'+ idItem +'\']); showButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-edit"></i></button><button id="deleteButton-'+ idItem +'" title="Eliminar" type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></div></form></td>');
     }
 }
 
@@ -60,22 +62,41 @@ function changeStatusButton(buttonsElement) {
     }
 }
 
-function changeLoadingOfButton(elementButton, icon='<i class="fas fa-check"></i>') {
-    if($(elementButton).has(icon)) {
-        $(elementButton).html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>');
+function changeLoadingOfButton(elementButton, status) {
+    let icon = '<i class="fas fa-check"></i>';
+    if(status == '') {
+        if($(elementButton).has(icon)) {
+            $(elementButton).html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>');
+        }
+    } else {
+        $(elementButton).html(icon);
     }
 }
 
-function updateObject(object, id, params) {
+function updateObject(idItem, object) {
+    changeInputToEdit('item-'+ idItem);
+    changeStatusButton([
+        '#deleteButton-'+ idItem,
+        '#cancelButton-'+ idItem,
+        '#saveButton-'+ idItem
+    ]);
+    changeLoadingOfButton('#saveButton-'+ idItem);
     $.ajax({
-        url: '/api/'+object+'/update/'+id+'',
+        url: '/api/'+object+'/update/'+idItem,
         method: 'PUT',
         headers: {
             token: $("meta[name='_token']").attr("content"),
         },
-        data: params,
+        data: $('#itemForm-'+idItem).serializeArray(),
         success: (data) => {
-            $('#saveButton-'+id).html('<i class="fas fa-check"></i>');
+            changeStatusButton([
+                '#deleteButton-'+ idItem,
+                '#cancelButton-'+ idItem,
+                '#saveButton-'+ idItem
+            ]);
+            showButton(['#editButton-'+ idItem]);
+            changeLoadingOfButton('#saveButton-'+ idItem, 1);
+            hideButton(['#saveButton-'+ idItem, '#cancelButton-'+ idItem])
         }
     });
 }

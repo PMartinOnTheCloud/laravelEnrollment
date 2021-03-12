@@ -11,7 +11,7 @@
         <div class="terms-info row">
             <div class="d-flex justify-content-center">
                 <div class="spinner-border" role="status">
-                  <span class="sr-only">Cargando...</span>
+                  <span class="sr-only"></span>
                 </div>
             </div>
         </div>
@@ -28,6 +28,10 @@
                     showDataInTable({'name': 'Nombre', 'description': 'Descripción', 'start': 'Fecha de comienzo', 'end': 'Fecha de finalización', 'actions': 'Acciones'}, data, '.terms-info');
                 }
             });
+        });
+
+        $('form').submit(function () {
+
         });
         </script>
     </div>
