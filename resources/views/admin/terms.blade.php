@@ -26,8 +26,11 @@
                     token: $("meta[name='_token']").attr("content"),
                 },
                 success: (data) => {
-                    showDataInTable({'name': 'Nombre', 'description': 'Descripción', 'start': 'Fecha de comienzo', 'end': 'Fecha de finalización', 'actions': 'Acciones'}, data, '.terms-info', 'terms');
-                    toastr["info"]('Mostrando los cursos disponibles de la base de datos');
+                    toastr["info"]('Mostrando los cursos activos...');
+                    showDataInTable({'name': ['Nombre', 'text'], 'description': ['Descripción', 'text'], 'start': ['Fecha de comienzo', 'date'], 'end': ['Fecha de finalización', 'date'], 'actions': ['Acciones', '']}, data, '.terms-info', 'terms');
+                },
+                error: (data) => {
+                    toastr["error"]('Ha ocurrido un problema a la hora de mostrar los cursos activos. Por favor, vuelva a actualizar la página.');
                 }
             });
         });

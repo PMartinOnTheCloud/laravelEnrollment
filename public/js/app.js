@@ -5,7 +5,7 @@ function showDataInTable(params, data, elementToInsert, object) {
     $(elementToInsert).append('<table class="table"><thead class="thead-light"><tr></tr></thead></table>');
 
     for(let elementHeader in params) {
-        $(elementToInsert+' > table.table > thead > tr').append('<th scope="col">'+ params[elementHeader] +'</th>');
+        $(elementToInsert+' > table.table > thead > tr').append('<th scope="col">'+ params[elementHeader][0] +'</th>');
     }
 
     $(elementToInsert+' > table.table').append('<tbody></tbody>');
@@ -15,7 +15,7 @@ function showDataInTable(params, data, elementToInsert, object) {
         $(elementToInsert+' > table.table > tbody').append('<tr id="item-'+ idItem +'"></tr>');
         for(let dataOfRow in data[elementsTable]) {
             if(dataOfRow in params) {
-                $('tr#item-'+ idItem).append('<td><input name="'+dataOfRow+'" type="text" class="form-control-plaintext" aria-label="" aria-describedby="inputGroup-sizing-default" value="'+ data[elementsTable][dataOfRow] +'" form="itemForm-'+ idItem +'" readonly></td>');
+                $('tr#item-'+ idItem).append('<td><input name="'+dataOfRow+'" type="'+ params[dataOfRow][1] +'" class="form-control-plaintext" aria-label="" aria-describedby="inputGroup-sizing-default" value="'+ data[elementsTable][dataOfRow] +'" form="itemForm-'+ idItem +'" readonly></td>');
             }
         }
 

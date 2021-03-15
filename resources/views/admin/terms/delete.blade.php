@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-sm-10" style="margin-top: 15px;">
                     <button id="deleteObject" type="button" class="btn btn-danger" onclick="softDeleteObject({{ $term->id }}, 'terms', 'curso');" disabled>Eliminar</button>
-                    <a type="button" class="btn btn-secondary">Cancelar</a>
+                    <a type="button" href="{{ asset('/admin/terms') }}" class="btn btn-secondary">Cancelar</a>
                 </div>
             </div>
         </div>
