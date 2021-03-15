@@ -20,7 +20,7 @@ class TermController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token'])
-                $data = Term::select("*")->get();
+                $data = Term::select("*")->where('active', '1')->get();
         }
 
         return response()->json($data);
@@ -99,8 +99,19 @@ class TermController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $data = ['status' => '403'];
+        $token = $request->header('token');
+        if(!empty($token)) {
+            $user = User::select("token")->where('token', $token)->get()[0];
+            if($user['token']) {
+                if(Term::whereId($id)->update(['active' => 0])) {
+                    $data = ['status' => '200', 'message' => 'El curso se ha eliminado.'];
+                }
+            }
+        }
+
+        return response()->json($data);
     }
 }

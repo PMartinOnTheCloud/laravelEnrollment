@@ -6,6 +6,7 @@
     <div class="container">
         <div class="container-info">
             <h1>Cursos</h1>
+            <div class="breadcrumb">Administración > Cursos</div>
         </div>
 
         <div class="terms-info row">
@@ -25,13 +26,10 @@
                     token: $("meta[name='_token']").attr("content"),
                 },
                 success: (data) => {
-                    showDataInTable({'name': 'Nombre', 'description': 'Descripción', 'start': 'Fecha de comienzo', 'end': 'Fecha de finalización', 'actions': 'Acciones'}, data, '.terms-info');
+                    showDataInTable({'name': 'Nombre', 'description': 'Descripción', 'start': 'Fecha de comienzo', 'end': 'Fecha de finalización', 'actions': 'Acciones'}, data, '.terms-info', 'terms');
+                    toastr["info"]('Mostrando los cursos disponibles de la base de datos');
                 }
             });
-        });
-
-        $('form').submit(function () {
-
         });
         </script>
     </div>

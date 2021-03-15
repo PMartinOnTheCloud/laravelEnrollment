@@ -20,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::put('terms/update/{id}', 'App\Http\Controllers\TermController@update');
 
+Route::delete('terms/delete/{id}', 'App\Http\Controllers\TermController@destroy');
+
 Route::resource('terms', 'App\Http\Controllers\TermController');

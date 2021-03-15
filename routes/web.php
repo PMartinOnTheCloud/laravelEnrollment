@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Term;
 
 
 /*
@@ -34,15 +35,16 @@ Route::name('admin')
   ->group(function () {
 
     Route::get('/dashboard', function() {
-        if(Auth::check()) {
-            return view('/admin/dashboard');
-        }
+        return view('/admin/dashboard');
     });
 
-    Route::get('/courses', function() {
-        if(Auth::check()) {
-            return view('/admin/courses', ['terms' => [App\Http\Controllers\TermController::class, 'getTerms']]);
-        }
+    Route::get('/terms', function() {
+        return view('/admin/terms');
+    });
+
+    Route::get('/terms/delete/{id}', function($id) {
+        $term = Term::where('active', '1')->findOrFail($id);
+        return view('/admin/terms/delete', ['term' => $term]);
     });
 
     Route::resource('users', 'UserController');

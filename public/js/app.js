@@ -1,4 +1,4 @@
-function showDataInTable(params, data, elementToInsert) {
+function showDataInTable(params, data, elementToInsert, object) {
 
     $(elementToInsert).html('');
 
@@ -19,9 +19,7 @@ function showDataInTable(params, data, elementToInsert) {
             }
         }
 
-/* changeInputToEdit(\'item-'+ idItem +'\'); changeStatusButton([\'#deleteButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\',\'#saveButton-'+ idItem +'\']); changeLoadingOfButton(this); */
-
-        $('tr#item-'+ idItem).append('<td><form action="#" id="itemForm-'+ idItem +'" onsubmit="updateObject('+ idItem +', \'terms\'); return false;"><div class="btn-group" role="group" aria-label="Actions"><button id="saveButton-'+ idItem +'" style="display: none;" title="Guardar" type="submit" class="btn btn-success"><i class="fas fa-check"></i></button><button id="cancelButton-'+ idItem +'" style="display: none;" title="Cancelar" type="reset" class="btn btn-secondary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); showButton([\'#editButton-'+ idItem +'\']); hideButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-times"></i></button><button id="editButton-'+ idItem +'" title="Editar" type="button" class="btn btn-primary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); hideButton([\'#editButton-'+ idItem +'\']); showButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-edit"></i></button><button id="deleteButton-'+ idItem +'" title="Eliminar" type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></div></form></td>');
+        $('tr#item-'+ idItem).append('<td><form action="#" id="itemForm-'+ idItem +'" onsubmit="updateObject('+ idItem +', \''+ object +'\', \'curso\'); return false;"><div class="btn-group" role="group" aria-label="Actions"><button id="saveButton-'+ idItem +'" style="display: none;" title="Guardar" type="submit" class="btn btn-success"><i class="fas fa-check"></i></button><button id="cancelButton-'+ idItem +'" style="display: none;" title="Cancelar" type="reset" class="btn btn-secondary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); showButton([\'#editButton-'+ idItem +'\']); hideButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-times"></i></button><button id="editButton-'+ idItem +'" title="Editar" type="button" class="btn btn-primary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); hideButton([\'#editButton-'+ idItem +'\']); showButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-edit"></i></button><button id="deleteButton-'+ idItem +'" title="Eliminar" type="button" class="btn btn-danger" onclick="location.href=\''+object+'/delete/'+ idItem +'\'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></form></td>');
     }
 }
 
@@ -62,7 +60,7 @@ function changeStatusButton(buttonsElement) {
     }
 }
 
-function changeLoadingOfButton(elementButton, status) {
+function changeLoadingOfButton(elementButton, status='') {
     let icon = '<i class="fas fa-check"></i>';
     if(status == '') {
         if($(elementButton).has(icon)) {
@@ -73,7 +71,7 @@ function changeLoadingOfButton(elementButton, status) {
     }
 }
 
-function updateObject(idItem, object) {
+function updateObject(idItem, object, name) {
     changeInputToEdit('item-'+ idItem);
     changeStatusButton([
         '#deleteButton-'+ idItem,
@@ -96,7 +94,48 @@ function updateObject(idItem, object) {
             ]);
             showButton(['#editButton-'+ idItem]);
             changeLoadingOfButton('#saveButton-'+ idItem, 1);
-            hideButton(['#saveButton-'+ idItem, '#cancelButton-'+ idItem])
+            hideButton(['#saveButton-'+ idItem, '#cancelButton-'+ idItem]);
+            toastr["success"]('Has editado el '+ name +' #'+ idItem +' correctamente.');
+        },
+        error: (data) => {
+            toastr["error"]('Ha ocurrido un problema con la base de datos y no se ha podido editar el '+ name +' satisfactoriamente.');
+            changeStatusButton([
+                '#deleteButton-'+ idItem,
+                '#cancelButton-'+ idItem,
+                '#saveButton-'+ idItem
+            ]);
+            showButton(['#editButton-'+ idItem]);
+            changeLoadingOfButton('#saveButton-'+ idItem, 1);
+            hideButton(['#saveButton-'+ idItem, '#cancelButton-'+ idItem]);
+            $('#itemForm-'+ idItem).trigger("reset");
+        }
+    });
+}
+
+function allowButtonToPressIfTextIsSame(textNeedsToBeEqual, inputText, buttonElement) {
+    if(textNeedsToBeEqual == inputText) {
+        $(buttonElement).removeAttr('disabled');
+    } else {
+        $(buttonElement).attr('disabled', '');
+    }
+}
+
+function softDeleteObject(idItem, object, name) {
+    changeStatusButton(['#deleteObject']);
+    changeLoadingOfButton('#deleteObject');
+    $.ajax({
+        url: '/api/'+object+'/delete/'+idItem,
+        method: 'DELETE',
+        headers: {
+            token: $("meta[name='_token']").attr("content"),
+        },
+        success: (data) => {
+            location.href = '/admin/'+ object;
+        },
+        error: (data) => {
+            toastr["error"]('Ha ocurrido un problema con la base de datos y no se ha podido eliminar el '+ name +' satisfactoriamente.');
+            changeStatusButton(['#deleteObject']);
+            $('#deleteObject').html('Eliminar');
         }
     });
 }
