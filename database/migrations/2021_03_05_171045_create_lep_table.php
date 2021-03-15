@@ -28,7 +28,7 @@ class CreateLepTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->boolean('active');
+            $table->boolean('active')->default('1');
             $table->date('start');
             $table->date('end');
             $table->timestamps();

@@ -98,7 +98,7 @@ function updateObject(idItem, object, name) {
             toastr["success"]('Has editado el '+ name +' #'+ idItem +' correctamente.');
         },
         error: (data) => {
-            toastr["error"]('Ha ocurrido un problema con la base de datos y no se ha podido editar el '+ name +' satisfactoriamente.');
+            toastr["error"]('Ha ocurrido un problema y no se ha podido editar el '+ name +' satisfactoriamente.  Vuelve a intentarlo en 5 minutos.');
             changeStatusButton([
                 '#deleteButton-'+ idItem,
                 '#cancelButton-'+ idItem,
@@ -133,9 +133,39 @@ function softDeleteObject(idItem, object, name) {
             location.href = '/admin/'+ object;
         },
         error: (data) => {
-            toastr["error"]('Ha ocurrido un problema con la base de datos y no se ha podido eliminar el '+ name +' satisfactoriamente.');
+            toastr["error"]('Ha ocurrido un problema y no se ha podido eliminar el '+ name +' satisfactoriamente. Vuelve a intentarlo en 5 minutos.');
             changeStatusButton(['#deleteObject']);
             $('#deleteObject').html('Eliminar');
+        }
+    });
+}
+
+function createObject(elementButton, object, name) {
+    changeStatusButton(elementButton);
+    changeLoadingOfButton(elementButton[0]);
+
+    $.ajax({
+        url: '/api/'+object+'/create',
+        method: 'POST',
+        headers: {
+            token: $("meta[name='_token']").attr("content"),
+        },
+        data: $('#createObjectForm').serializeArray(),
+        success: (data) => {
+            if (data['status'] == '200') {
+                toastr["success"](data['message']);
+                $('#createObjectForm').trigger("reset");
+                $('#createObjectModal').modal('hide');
+            } else {
+                toastr["error"](data['message']);
+            }
+        },
+        error: (data) => {
+            toastr["error"]('Ha ocurrido un problema y no se ha podido crear el '+ name +' satisfactoriamente. Vuelve a intentarlo en 5 minutos.');
+        },
+        complete: (data) => {
+            changeStatusButton(elementButton);
+            $(elementButton[0]).html('Agregar');
         }
     });
 }

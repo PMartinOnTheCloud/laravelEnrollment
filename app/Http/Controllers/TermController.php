@@ -31,9 +31,24 @@ class TermController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = ['status' => '403'];
+        $token = $request->header('token');
+        if(!empty($token)) {
+            $user = User::select("token")->where('token', $token)->get()[0];
+            if($user['token']) {
+                if($request->start < $request->end) {
+                    if(Term::create($request->all())) {
+                        $data = ['status' => '200', 'message' => 'El curso se ha añadido.'];
+                    }
+                } else {
+                    $data = ['status' => '404', 'message' => 'El curso no se ha podido añadir debido a que la fecha de comenzar debe de ser inferior a la de finalizar.'];
+                }
+            }
+        }
+
+        return response()->json($data);
     }
 
     /**
