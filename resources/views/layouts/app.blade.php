@@ -18,7 +18,9 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+
         <!-- Styles -->
+        <link href="{{ asset('css/boostrap.css') }}" rel="stylesheet">
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
         <!-- Fontawesome -->
@@ -45,10 +47,11 @@
             @endunless
         </header>
 
-        <nav>
+
             @if(Auth::check())
-            <h2>Menú</h2>
+            <h2 class="menu">Menú</h2>
             @if(Auth::user()->role == 'admin')
+            <nav class="adminav">
             <ul>
                 <li>
                     <a href="dashboard">
@@ -69,6 +72,7 @@
             @endif
 
             @if(Auth::user()->role == 'alumn')
+            <nav>
             <ul>
                 <li>
                     <a href="dashboard">

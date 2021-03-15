@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-	    <meta charset="utf-8">
-  	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	    <title>Sample Page</title>
+        <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
+        <link href="{{asset('css/main.css')}}" rel="stylesheet">
 	    <script src="https://kit.fontawesome.com/74ec47558a.js" crossorigin="anonymous"></script>
-	    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
     </head>
     <body>
 		<h1>Sample page</h1>
@@ -31,16 +35,16 @@
 			<li>The <var>variable element</var>, such as <var>x</var> = <var>y</var>.</li>
 			<li>The time element: <time datetime="2013-04-06T12:32+00:00">2 weeks ago</time></li>
 		</ol>
-		<h2>Sample Form</h2>  
+		<h2>Sample Form</h2>
 		<p>All form fields are required.</p>
 		<form>
 			<fieldset>
 			<legend>Your title here</legend>
 				<p><label>Email</label>
-				<input type="text" placeholder="email@dominio.es"></p>
+				<input type="text" class="form-control " placeholder="email@dominio.es"></p>
 
 				<p><label>Password</label>
-				<input type="password" ></p>
+				<input class="form-control " type="password" ></p>
 
 				<p><label>Make your choice:</label>
 				<select>
@@ -50,12 +54,12 @@
 					<option>Roma</option>
 				</select></p>
 
-				<input type="submit" value="Submit">
-				<button>I'm a button</button>
-				<a>I'm a link that appear like a button</a>
+				<input type="submit" class="" value="Submit">
+				<button class="">I'm a button</button>
+				<a class="btn btn-link" href="#">I'm a link that appear like a button</a>
 			</fieldset>
 		</form>
-		  
+
 		<h3>Super Important data</h3>
 		<table border="1" cellpadding="10">
 			<caption>The dark side teachers</caption>
