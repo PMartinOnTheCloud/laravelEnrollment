@@ -11,7 +11,7 @@
 	    <script src="https://kit.fontawesome.com/74ec47558a.js" crossorigin="anonymous"></script>
 
     </head>
-    <body>
+    <body class="text-center">
 		<h1>Sample page</h1>
 		<p>This is a test page filled with common HTML elements. </p>
 		<div class="container">

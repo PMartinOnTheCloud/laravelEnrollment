@@ -25,6 +25,10 @@ Route::get('/sample', function () {
     return view('sample');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
 Route::get('home', function() {
     if (auth()->user()->role == 'admin') {
         return redirect('/admin/dashboard');

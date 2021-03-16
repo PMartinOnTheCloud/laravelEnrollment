@@ -96,6 +96,11 @@ div.content {
     float: left;
 
 }
+
+div.contentlogin{
+
+}
+
 .container:after {
   display: block;
   margin: 10px;
@@ -153,17 +158,6 @@ button {
  	box-shadow: 2px 2px 10px var(--CoreSBlue);
 }
 
-ol {
-	color: var(--CoreDBlue);
-}
-
-ul {
-	color: var(--CoreDBlue);
-}
-
-li{
-
-}
 
 .hide-element {
     display: none;

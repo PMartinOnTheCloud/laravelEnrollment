@@ -97,8 +97,8 @@
 			@endif
 			@endif
 
-		<div class="content">
-			@yield('content')
+		<div class="contentlogin">
+			@yield('contentlogin')
 
 			<footer>
 				<p><?php echo date('Y'); ?> &copy; Kobloard</p>
