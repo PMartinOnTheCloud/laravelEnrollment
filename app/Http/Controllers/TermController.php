@@ -20,7 +20,7 @@ class TermController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token']) {
-                $data = Term::select("*")->where('active', '1')->get();
+                $data = Term::select("*")->get();
             }
         }
 
@@ -39,7 +39,7 @@ class TermController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token']) {
-                $data = Term::select('id', 'name')->where('active', '1')->get();
+                $data = Term::select('id', 'name')->get();
             }
         }
 
@@ -141,7 +141,7 @@ class TermController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token']) {
-                if(Term::whereId($id)->update(['active' => 0])) {
+                if(Term::whereId($id)->delete()) {
                     $data = ['status' => '200', 'message' => 'El curso se ha eliminado.'];
                 }
             }

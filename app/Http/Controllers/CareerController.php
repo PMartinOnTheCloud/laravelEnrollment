@@ -19,8 +19,9 @@ class CareerController extends Controller
         $token = $request->header('token');
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
-            if($user['token'])
-                $data = Career::select("*")->where('active', '1')->get();
+            if($user['token']) {
+                $data = Career::select("*")->get();
+            }
         }
 
         return response()->json($data);
@@ -83,7 +84,6 @@ class CareerController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token']) {
-
                 if(Career::whereId($id)->update($request->all())) {
                     $data = ['status' => '200', 'message' => 'El ciclo se ha actualizado.'];
                 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Term;
 use App\Models\Career;
+use App\Models\User;
 
 
 /*
@@ -59,6 +60,11 @@ Route::name('admin')
 
     Route::get('/students', function() {
         return view('/admin/students');
+    });
+
+    Route::get('/students/delete/{id}', function($id) {
+        $student = User::where('role', 'alumn')->findOrFail($id);
+        return view('/admin/deletes/students', ['student' => $student]);
     });
 
     Route::resource('users', 'UserController');
