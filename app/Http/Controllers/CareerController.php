@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Term;
+use App\Models\Career;
 use App\Models\User;
 
-class TermController extends Controller
+class CareerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,20 +20,7 @@ class TermController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token'])
-                $data = Term::select("*")->where('active', '1')->get();
-        }
-
-        return response()->json($data);
-    }
-
-    public function showoptions(Request $request)
-    {
-        $data = ['status' => '403'];
-        $token = $request->header('token');
-        if(!empty($token)) {
-            $user = User::select("token")->where('token', $token)->get()[0];
-            if($user['token'])
-                $data = Term::select('id', 'name')->where('active', '1')->get();
+                $data = Career::select("*")->where('active', '1')->get();
         }
 
         return response()->json($data);
@@ -51,28 +38,13 @@ class TermController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token']) {
-                if($request->start < $request->end) {
-                    if(Term::create($request->all())) {
-                        $data = ['status' => '200', 'message' => 'El curso se ha añadido.'];
-                    }
-                } else {
-                    $data = ['status' => '404', 'message' => 'El curso no se ha podido añadir debido a que la fecha de comenzar debe de ser inferior a la de finalizar.'];
+                if(Career::create($request->all())) {
+                    $data = ['status' => '200', 'message' => 'El ciclo se ha añadido.'];
                 }
             }
         }
 
         return response()->json($data);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -112,8 +84,8 @@ class TermController extends Controller
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token']) {
 
-                if(Term::whereId($id)->update($request->all())) {
-                    $data = ['status' => '200', 'message' => 'El curso se ha actualizado.'];
+                if(Career::whereId($id)->update($request->all())) {
+                    $data = ['status' => '200', 'message' => 'El ciclo se ha actualizado.'];
                 }
             }
         }
@@ -134,8 +106,8 @@ class TermController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token']) {
-                if(Term::whereId($id)->update(['active' => 0])) {
-                    $data = ['status' => '200', 'message' => 'El curso se ha eliminado.'];
+                if(Career::whereId($id)->update(['active' => 0])) {
+                    $data = ['status' => '200', 'message' => 'El ciclo se ha eliminado.'];
                 }
             }
         }

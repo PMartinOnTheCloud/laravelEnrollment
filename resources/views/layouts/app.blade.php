@@ -67,6 +67,11 @@
 					</a>
 				</li>
 				<li>
+					<a href="{{ asset('/admin/careers') }}">
+						<i class="fas fa-puzzle-piece"></i> Ciclos
+					</a>
+				</li>
+				<li>
 					<a href="#">
 						<i class="fas fa-user-friends"></i> Alumnos
 					</a>

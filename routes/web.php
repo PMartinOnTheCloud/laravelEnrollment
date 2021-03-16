@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Term;
+use App\Models\Career;
 
 
 /*
@@ -44,7 +45,16 @@ Route::name('admin')
 
     Route::get('/terms/delete/{id}', function($id) {
         $term = Term::where('active', '1')->findOrFail($id);
-        return view('/admin/terms/delete', ['term' => $term]);
+        return view('/admin/deletes/terms', ['term' => $term]);
+    });
+
+    Route::get('/careers', function() {
+        return view('/admin/careers');
+    });
+
+    Route::get('/careers/delete/{id}', function($id) {
+        $career = Career::where('active', '1')->findOrFail($id);
+        return view('/admin/deletes/careers', ['career' => $career]);
     });
 
     Route::resource('users', 'UserController');

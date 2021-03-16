@@ -42,6 +42,8 @@ class CreateLepTable extends Migration
             $table->string('name');
             $table->string('code');
             $table->text('description');
+            $table->boolean('active')->default('1');
+            $table->timestamps();
         });
 
 

@@ -23,13 +23,15 @@ class DatabaseSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         // And now, let's create a few terms in our database:
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             DB::table('terms')->insert([
                 'name' => $faker->sentence,
                 'description' => $faker->paragraph,
                 'active' => mt_rand(0, 1),
                 'start' => $faker->date,
-                'end' => $faker->date
+                'end' => $faker->date,
+                'created_at' => now(),
+                'updated_at' => now()
             ]);
         }
 
@@ -52,5 +54,17 @@ class DatabaseSeeder extends Seeder
             'created_at' => '2021-03-10 11:21:37',
             'updated_at' => '2021-03-10 11:21:37'
         ]);
+
+        for ($i = 0; $i < 10; $i++) {
+            DB::table('careers')->insert([
+                'term_id' => mt_rand(1, 30),
+                'name' => $faker->word,
+                'code' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'),
+                'description' => $faker->paragraph,
+                'active' => $faker->boolean($chanceOfGettingTrue = 70),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
     }
 }

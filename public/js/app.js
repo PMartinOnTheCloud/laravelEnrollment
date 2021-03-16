@@ -1,4 +1,4 @@
-function showDataInTable(params, data, elementToInsert, object) {
+function showDataInTable(params, data, elementToInsert, object, name) {
 
     $(elementToInsert).html('');
 
@@ -19,7 +19,7 @@ function showDataInTable(params, data, elementToInsert, object) {
             }
         }
 
-        $('tr#item-'+ idItem).append('<td><form action="#" id="itemForm-'+ idItem +'" onsubmit="updateObject('+ idItem +', \''+ object +'\', \'curso\'); return false;"><div class="btn-group" role="group" aria-label="Actions"><button id="saveButton-'+ idItem +'" style="display: none;" title="Guardar" type="submit" class="btn btn-success"><i class="fas fa-check"></i></button><button id="cancelButton-'+ idItem +'" style="display: none;" title="Cancelar" type="reset" class="btn btn-secondary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); showButton([\'#editButton-'+ idItem +'\']); hideButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-times"></i></button><button id="editButton-'+ idItem +'" title="Editar" type="button" class="btn btn-primary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); hideButton([\'#editButton-'+ idItem +'\']); showButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-edit"></i></button><button id="deleteButton-'+ idItem +'" title="Eliminar" type="button" class="btn btn-danger" onclick="location.href=\''+object+'/delete/'+ idItem +'\'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></form></td>');
+        $('tr#item-'+ idItem).append('<td><form action="#" id="itemForm-'+ idItem +'" onsubmit="updateObject('+ idItem +', \''+ object +'\', \''+ name +'\'); return false;"><div class="btn-group" role="group" aria-label="Actions"><button id="saveButton-'+ idItem +'" style="display: none;" title="Guardar" type="submit" class="btn btn-success"><i class="fas fa-check"></i></button><button id="cancelButton-'+ idItem +'" style="display: none;" title="Cancelar" type="reset" class="btn btn-secondary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); showButton([\'#editButton-'+ idItem +'\']); hideButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-times"></i></button><button id="editButton-'+ idItem +'" title="Editar" type="button" class="btn btn-primary" onclick="changeInputToEdit(\'item-'+ idItem +'\'); hideButton([\'#editButton-'+ idItem +'\']); showButton([\'#saveButton-'+ idItem +'\',\'#cancelButton-'+ idItem +'\']);"><i class="fas fa-edit"></i></button><button id="deleteButton-'+ idItem +'" title="Eliminar" type="button" class="btn btn-danger" onclick="location.href=\''+object+'/delete/'+ idItem +'\'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></form></td>');
     }
 }
 
