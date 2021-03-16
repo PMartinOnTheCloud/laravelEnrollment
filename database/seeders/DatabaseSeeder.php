@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->safeEmail,
                 'token' => '',
-                'password' => App::make('hash')->make($faker->word),
+                'password' => Hash::make($faker->word),
                 'role' => 'alumn',
                 'created_at' => now(),
                 'updated_at' => now()
