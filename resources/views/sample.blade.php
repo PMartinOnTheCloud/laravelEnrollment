@@ -14,15 +14,17 @@
     <body>
 		<h1>Sample page</h1>
 		<p>This is a test page filled with common HTML elements. </p>
-		<ul>
-			<li><a href="http://www.iesesteveterradas.cat/">This is a text link</a>.</li>
-			<li><strong>Strong is used to indicate strong importance.</strong></li>
-			<li><em>This text has added emphasis.</em></li>
-			<li>The <b>b element</b> is stylistically different text from normal text, without any special importance.</li>
-			<li>The <i>i element</i> is text that is offset from the normal text.</li>
-			<li>The <u>u element</u> is text with an unarticulated, though explicitly rendered, non-textual annotation.</li>
-			<li><del>This text is deleted</del> and <ins>This text is inserted</ins>.</li>
+		<div class="container">
+		<ul class="list-group">
+			<li class="list-group-item"><a class="btn btn-lin" href="http://www.iesesteveterradas.cat/">This is a text link</a>.</li>
+			<li class="list-group-item"><strong>Strong is used to indicate strong importance.</strong></li>
+			<li class="list-group-item"><em>This text has added emphasis.</em></li>
+			<li class="list-group-item">The <b>b element</b> is stylistically different text from normal text, without any special importance.</li>
+			<li class="list-group-item">The <i>i element</i> is text that is offset from the normal text.</li>
+			<li class="list-group-item">The <u>u element</u> is text with an unarticulated, though explicitly rendered, non-textual annotation.</li>
+			<li class="list-group-item"><del>This text is deleted</del> and <ins>This text is inserted</ins>.</li>
 		</ul>
+	</div>
 		<p>This is a second list:</p>
 		<ol>
 			<li><s>This text has a strikethrough</s>.</li>
@@ -47,7 +49,7 @@
 				<input class="form-control " type="password" ></p>
 
 				<p><label>Make your choice:</label>
-				<select>
+				<select class="form-control">
 					<option>London</option>
 					<option>Paris</option>
 					<option>Barcelona </option>
@@ -59,9 +61,9 @@
 				<a class="btn btn-link" href="#">I'm a link that appear like a button</a>
 			</fieldset>
 		</form>
-
+		<div class="container">
 		<h3>Super Important data</h3>
-		<table border="1" cellpadding="10">
+		<table class="table table-striped" border="1" cellpadding="10">
 			<caption>The dark side teachers</caption>
 			<thead>
 			<tr>
@@ -92,7 +94,7 @@
 			</tr>
 			</tbody>
 		</table>
-
+	</div>
 		<p>Break up your page with a horizontal rule or two. </p>
 		<hr>
 		<p>&#169; M9 Disseny d'interficies web 2021<br><small>IES Esteve Terradas i Illa</small></p>

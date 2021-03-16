@@ -230,3 +230,11 @@ input[type=submit]{
     background-color:var(--CoreDBlue);
     color:var(--CoreWhite);
 }
+
+mark{
+  background-color: var(--CoreSOrange);
+}
+
+ol{
+  font-weight: bolder;
+}
