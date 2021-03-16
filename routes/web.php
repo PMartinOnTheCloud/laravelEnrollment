@@ -57,6 +57,10 @@ Route::name('admin')
         return view('/admin/deletes/careers', ['career' => $career]);
     });
 
+    Route::get('/students', function() {
+        return view('/admin/students');
+    });
+
     Route::resource('users', 'UserController');
 });
 

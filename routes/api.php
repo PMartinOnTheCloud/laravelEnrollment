@@ -30,3 +30,10 @@ Route::put('careers/update/{id}', 'App\Http\Controllers\CareerController@update'
 Route::post('careers/create', 'App\Http\Controllers\CareerController@create');
 Route::delete('careers/delete/{id}', 'App\Http\Controllers\CareerController@destroy');
 Route::resource('careers', 'App\Http\Controllers\CareerController');
+
+// API DE ESTUDIANTES
+Route::put('students/update/{id}', 'App\Http\Controllers\StudentController@update');
+Route::post('students/create', 'App\Http\Controllers\StudentController@create');
+Route::delete('students/delete/{id}', 'App\Http\Controllers\StudentController@destroy');
+Route::resource('students', 'App\Http\Controllers\StudentController');
+
