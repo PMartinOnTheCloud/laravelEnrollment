@@ -8,7 +8,7 @@ function showDataInTable(params, data, elementToInsert) {
 
     $(elementToInsert).html('');
 
-    $(elementToInsert).append('<table class="table"><thead class="thead-light"><tr></tr></thead></table>');
+    $(elementToInsert).append('<table class="table table-striped" border="1" cellpadding="10"><thead class="thead-light"><tr></tr></thead></table>');
 
     for(let elementHeader in params) {
         $(elementToInsert+' > table.table > thead > tr').append('<th scope="col">'+ params[elementHeader] +'</th>');

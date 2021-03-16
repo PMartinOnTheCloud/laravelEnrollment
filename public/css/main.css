@@ -20,6 +20,10 @@ html, body{
 	background-color: var(--CoreWhite);
 }
 
+#landingbody{
+    background-color:var(--CoreSSGrey);
+}
+
 header {
     background: #23282d;
     color: white;
@@ -128,15 +132,17 @@ div.content {
 #landingfoot {
     width: 100%;
     height: 2em;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
+    padding: 0px;
+
 }
 
 footer {
     background: #214093;
     color: white;
-    height: 35px;
+    height: 80px;
 }
 
 footer > p {

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="landingbody">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +16,7 @@
     <script src="https://kit.fontawesome.com/74ec47558a.js" crossorigin="anonymous"></script>
 
   </head>
-  <body>
+  <body id="landingbody">
 
     <div class="container">
 	<div class="row">

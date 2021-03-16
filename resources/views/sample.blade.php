@@ -39,7 +39,7 @@
 		</ol>
 		<h2>Sample Form</h2>
 		<p>All form fields are required.</p>
-		<form>
+		<form class="form-control">
 			<fieldset>
 			<legend>Your title here</legend>
 				<p><label>Email</label>
@@ -97,6 +97,8 @@
 	</div>
 		<p>Break up your page with a horizontal rule or two. </p>
 		<hr>
+        <footer style="height: 80px">
 		<p>&#169; M9 Disseny d'interficies web 2021<br><small>IES Esteve Terradas i Illa</small></p>
-	</body>
+        </footer>
+    </body>
 </html>
