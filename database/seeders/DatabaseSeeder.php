@@ -73,7 +73,6 @@ class DatabaseSeeder extends Seeder
                 'name' => $faker->word,
                 'code' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'),
                 'description' => $faker->paragraph,
-                'active' => $faker->boolean($chanceOfGettingTrue = 70),
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
