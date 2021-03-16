@@ -75,7 +75,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{ asset('/admin/students') }}">
 						<i class="fas fa-user-friends"></i> Alumnos
 					</a>
 				</li>

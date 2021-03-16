@@ -51,9 +51,21 @@ class DatabaseSeeder extends Seeder
             'token' => '',
             'password' => '$2y$10$94eJ85GSQ3V5y/Zj1V86TOS2CZrLJ7LH2oWNJziwD4wSAi0GCmNVi',
             'role' => 'alumn',
-            'created_at' => '2021-03-10 11:21:37',
-            'updated_at' => '2021-03-10 11:21:37'
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
+
+        for ($i = 0; $i < 30; $i++) {
+            DB::table('users')->insert([
+                'name' => $faker->name,
+                'email' => $faker->safeEmail,
+                'token' => '',
+                'password' => Hash::make($faker->word),
+                'role' => 'alumn',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
 
         for ($i = 0; $i < 10; $i++) {
             DB::table('careers')->insert([
