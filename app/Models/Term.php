@@ -12,7 +12,7 @@ class Term extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'active'];
+    protected $fillable = ['name', 'description', 'start', 'end', 'active'];
 
     public function enrolments() {
         return $this->hasMany(Enrolment::class);

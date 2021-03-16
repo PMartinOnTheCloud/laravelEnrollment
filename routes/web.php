@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Term;
+use App\Models\Career;
 
 
 /*
@@ -38,15 +40,25 @@ Route::name('admin')
   ->group(function () {
 
     Route::get('/dashboard', function() {
-        if(Auth::check()) {
-            return view('/admin/dashboard');
-        }
+        return view('/admin/dashboard');
     });
 
-    Route::get('/courses', function() {
-        if(Auth::check()) {
-            return view('/admin/courses', ['terms' => [App\Http\Controllers\TermController::class, 'getTerms']]);
-        }
+    Route::get('/terms', function() {
+        return view('/admin/terms');
+    });
+
+    Route::get('/terms/delete/{id}', function($id) {
+        $term = Term::where('active', '1')->findOrFail($id);
+        return view('/admin/deletes/terms', ['term' => $term]);
+    });
+
+    Route::get('/careers', function() {
+        return view('/admin/careers');
+    });
+
+    Route::get('/careers/delete/{id}', function($id) {
+        $career = Career::where('active', '1')->findOrFail($id);
+        return view('/admin/deletes/careers', ['career' => $career]);
     });
 
     Route::resource('users', 'UserController');
@@ -65,6 +77,3 @@ Route::name('student')
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-
-//Route::get('/resources/views/auth/login', ['uses' => 'HomeController@index', 'as' => 'login']);
