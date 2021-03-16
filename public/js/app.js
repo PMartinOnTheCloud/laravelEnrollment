@@ -169,3 +169,23 @@ function createObject(elementButton, object, name) {
         }
     });
 }
+
+function getSelectOptionsByObject(elementSelect, object) {
+    if($('#'+ elementSelect.id +'> *').length <= 1) {
+        $.ajax({
+            url: '/api/'+object+'/showoptions',
+            method: 'GET',
+            headers: {
+                token: $("meta[name='_token']").attr("content"),
+            },
+            success: (data) => {
+                for(let object in data) {
+                    $(elementSelect).append('<option value="'+ data[object]['id'] +'">'+ data[object]['name'] +'</option>');
+                }
+            },
+            error: (data) => {
+                toastr["error"]('Error al insertar los '+ object +' dentro del seleccionador. Por favor, vuelva a intentarlo.');
+            }
+        });
+    }
+}

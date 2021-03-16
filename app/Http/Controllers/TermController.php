@@ -19,21 +19,28 @@ class TermController extends Controller
         $token = $request->header('token');
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
-            if($user['token'])
+            if($user['token']) {
                 $data = Term::select("*")->where('active', '1')->get();
+            }
         }
 
         return response()->json($data);
     }
 
+    /**
+     * Show data to show options.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function showoptions(Request $request)
     {
         $data = ['status' => '403'];
         $token = $request->header('token');
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
-            if($user['token'])
+            if($user['token']) {
                 $data = Term::select('id', 'name')->where('active', '1')->get();
+            }
         }
 
         return response()->json($data);

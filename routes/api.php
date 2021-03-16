@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::put('terms/update/{id}', 'App\Http\Controllers\TermController@update');
 Route::post('terms/create', 'App\Http\Controllers\TermController@create');
 Route::delete('terms/delete/{id}', 'App\Http\Controllers\TermController@destroy');
+Route::get('terms/showoptions', 'App\Http\Controllers\TermController@showoptions');
 Route::resource('terms', 'App\Http\Controllers\TermController');
 
 // API DE CICLOS

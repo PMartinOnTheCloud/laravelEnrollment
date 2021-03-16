@@ -64,6 +64,15 @@
                                         Por favor, inserte un código.
                                     </div>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="termInput" class="form-label">Curso para asignar</label>
+                                    <select id="termInput" class="form-select" name="term_id" onclick="getSelectOptionsByObject(this, 'terms');">
+                                        <option value="" selected disabled>Selecciona el curso para asignarlo a este curso</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, inserte un código.
+                                    </div>
+                                </div>
                             </fieldset>
                         </div>
                         <div class="modal-footer">
@@ -87,18 +96,6 @@
                     toastr["info"]('Mostrando los ciclos activos...');
                     showDataInTable({'name': ['Nombre', 'text'], 'code': ['Código', 'text'], 'description': ['Descripción', 'text'], 'actions': ['Acciones', '']}, data, '.careers-info', 'careers', 'ciclo');
                 },
-                error: (data) => {
-                    toastr["error"]('Ha ocurrido un problema a la hora de mostrar los ciclos activos. Por favor, vuelva a actualizar la página.');
-                }
-            });
-
-            $.ajax({
-                url: '{{ asset('api/terms/showoptions') }}',
-                method: 'GET',
-                headers: {
-                    token: $("meta[name='_token']").attr("content"),
-                },
-                success: (data) => {},
                 error: (data) => {
                     toastr["error"]('Ha ocurrido un problema a la hora de mostrar los ciclos activos. Por favor, vuelva a actualizar la página.');
                 }
