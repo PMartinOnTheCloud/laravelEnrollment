@@ -75,7 +75,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="{{ asset('/admin/students') }}">
+					<a href="#">
 						<i class="fas fa-user-friends"></i> Alumnos
 					</a>
 				</li>
@@ -97,8 +97,8 @@
 			@endif
 			@endif
 
-		<div class="content">
-			@yield('content')
+		<div class="contentlogin">
+			@yield('contentlogin')
 
 			<footer>
 				<p><?php echo date('Y'); ?> &copy; Kobloard</p>

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Term;
+use App\Models\Career;
+use App\Models\User;
 
 
 /*
@@ -19,6 +22,14 @@ Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/sample', function () {
+    return view('sample');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
 Route::get('home', function() {
     if (auth()->user()->role == 'admin') {
         return redirect('/admin/dashboard');
@@ -34,15 +45,34 @@ Route::name('admin')
   ->group(function () {
 
     Route::get('/dashboard', function() {
-        if(Auth::check()) {
-            return view('/admin/dashboard');
-        }
+        return view('/admin/dashboard');
     });
 
-    Route::get('/courses', function() {
-        if(Auth::check()) {
-            return view('/admin/courses', ['terms' => [App\Http\Controllers\TermController::class, 'getTerms']]);
-        }
+    Route::get('/terms', function() {
+        return view('/admin/terms');
+    });
+
+    Route::get('/terms/delete/{id}', function($id) {
+        $term = Term::where('active', '1')->findOrFail($id);
+        return view('/admin/deletes/terms', ['term' => $term]);
+    });
+
+    Route::get('/careers', function() {
+        return view('/admin/careers');
+    });
+
+    Route::get('/careers/delete/{id}', function($id) {
+        $career = Career::where('active', '1')->findOrFail($id);
+        return view('/admin/deletes/careers', ['career' => $career]);
+    });
+
+    Route::get('/students', function() {
+        return view('/admin/students');
+    });
+
+    Route::get('/students/delete/{id}', function($id) {
+        $student = User::where('role', 'alumn')->findOrFail($id);
+        return view('/admin/deletes/students', ['student' => $student]);
     });
 
     Route::resource('users', 'UserController');
@@ -61,6 +91,3 @@ Route::name('student')
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-
-//Route::get('/resources/views/auth/login', ['uses' => 'HomeController@index', 'as' => 'login']);
