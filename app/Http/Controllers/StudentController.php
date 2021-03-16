@@ -18,8 +18,9 @@ class StudentController extends Controller
         $token = $request->header('token');
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
-            if($user['token'])
+            if($user['token']) {
                 $data = User::select("*")->where('role', 'alumn')->get();
+            }
         }
 
         return response()->json($data);
@@ -104,7 +105,7 @@ class StudentController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token']) {
-                if(User::whereId($id)->update(['active' => 0])) {
+                if(User::whereId($id)->delete()) {
                     $data = ['status' => '200', 'message' => 'El estudiante se ha eliminado.'];
                 }
             }
