@@ -55,9 +55,9 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             DB::table('users')->insert([
-                'name' => $faker->name,
+                'name' => $faker->firstName,
                 'email' => $faker->safeEmail,
                 'token' => '',
                 'password' => Hash::make($faker->word),
