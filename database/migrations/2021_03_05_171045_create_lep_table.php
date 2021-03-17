@@ -17,21 +17,23 @@ class CreateLepTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('token')->nullable();
             $table->string('password');
             $table->enum('role',['admin','alumn'])->default('alumn');
+            $table->softDeletes();
             $table->timestamps();
         });
-
 
         Schema::create('terms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->boolean('active');
+            $table->boolean('active')->default('1');
             $table->date('start');
             $table->date('end');
+            $table->softDeletes();
+            $table->timestamps();
         });
-
 
         Schema::create('careers', function (Blueprint $table) {
             $table->id();
@@ -40,6 +42,8 @@ class CreateLepTable extends Migration
             $table->string('name');
             $table->string('code');
             $table->text('description');
+            $table->softDeletes();
+            $table->timestamps();
         });
 
 

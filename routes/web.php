@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use App\Models\Term;
+use App\Models\Career;
+use App\Models\User;
+use App\Models\LogSql;
 
 
 /*
@@ -19,6 +24,14 @@ Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/sample', function () {
+    return view('sample');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
 Route::get('home', function() {
     if (auth()->user()->role == 'admin') {
         return redirect('/admin/dashboard');
@@ -26,7 +39,7 @@ Route::get('home', function() {
     return redirect('/student/dashboard');
 })->middleware(['auth']);
 
-Auth::routes(['register' => true]);
+Auth::routes(['register' => false]);
 
 Route::name('admin')
   ->prefix('admin')
@@ -34,15 +47,42 @@ Route::name('admin')
   ->group(function () {
 
     Route::get('/dashboard', function() {
-        if(Auth::check()) {
-            return view('/admin/dashboard');
-        }
+        Log::channel('logapp')->info('Ha entrado a /admin/dashboard', ['user_id' => Auth::user()->id]);
+        return view('/admin/dashboard');
     });
 
-    Route::get('/courses', function() {
-        if(Auth::check()) {
-            return view('/admin/courses', ['terms' => [App\Http\Controllers\TermController::class, 'getTerms']]);
-        }
+    Route::get('/terms', function() {
+        Log::channel('logapp')->info('Ha entrado a /admin/terms', ['user_id' => Auth::user()->id]);
+        return view('/admin/terms');
+    });
+
+    Route::get('/terms/delete/{id}', function($id) {
+        $term = Term::findOrFail($id);
+        Log::channel('logapp')->info('Ha entrado a /admin/terms/delete/'. $id, ['user_id' => Auth::user()->id]);
+        return view('/admin/deletes/terms', ['term' => $term]);
+    });
+
+    Route::get('/careers', function() {
+        Log::channel('logapp')->info('Ha entrado a /admin/careers', ['user_id' => Auth::user()->id]);
+        return view('/admin/careers');
+    });
+
+    Route::get('/careers/delete/{id}', function($id) {
+        $career = Career::findOrFail($id);
+        Log::channel('logapp')->info('Ha entrado a /admin/careers/delete/'. $id, ['user_id' => Auth::user()->id]);
+        return view('/admin/deletes/careers', ['career' => $career]);
+    });
+
+    Route::get('/students', function() {
+        $users = User::where('role', 'alumn')->paginate(20);
+        Log::channel('logapp')->info('Ha entrado a /admin/students', ['user_id' => Auth::user()->id]);
+        return view('/admin/students', ['users' => $users]);
+    });
+
+    Route::get('/students/delete/{id}', function($id) {
+        $student = User::where('role', 'alumn')->findOrFail($id);
+        Log::channel('logapp')->info('Ha entrado a /admin/students/delete/'. $id, ['user_id' => Auth::user()->id]);
+        return view('/admin/deletes/students', ['student' => $student]);
     });
 
     Route::resource('users', 'UserController');
@@ -54,6 +94,7 @@ Route::name('student')
   ->group(function () {
 
     Route::get('/dashboard', function() {
+        Log::channel('logapp')->info('Ha entrado a /student/dashboard', ['user_id' => Auth::user()->id]);
         return view('/student/dashboard');
     });
 
@@ -61,6 +102,3 @@ Route::name('student')
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-
-//Route::get('/resources/views/auth/login', ['uses' => 'HomeController@index', 'as' => 'login']);
