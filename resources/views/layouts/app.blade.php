@@ -84,7 +84,7 @@
 
 
 			@if(Auth::user()->role == 'alumn')
-			<nav>
+			<nav class="alumn">
 			<ul>
 				<li>
 					<a href="{{ asset('/student/dashboard') }}">
