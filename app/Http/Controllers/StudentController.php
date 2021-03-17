@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -17,9 +17,10 @@ class StudentController extends Controller
         $data = ['status' => '403'];
         $token = $request->header('token');
         if(!empty($token)) {
-            $user = User::select("token")->where('token', $token)->get()[0];
+            $user = User::select('id', 'token')->where('token', $token)->get()[0];
             if($user['token']) {
                 $data = User::select("*")->where('role', 'alumn')->get();
+                Log::channel('logapp')->notice('Ha solicitado mostrar todos los alumnos', ['user_id' => $user['id']]);
             }
         }
 
@@ -36,10 +37,11 @@ class StudentController extends Controller
         $data = ['status' => '403'];
         $token = $request->header('token');
         if(!empty($token)) {
-            $user = User::select("token")->where('token', $token)->get()[0];
+            $user = User::select('id', 'token')->where('token', $token)->get()[0];
             if($user['token']) {
                 if(User::create($request->all())) {
-                    $data = ['status' => '200', 'message' => 'El estudiante se ha añadido.'];
+                    $data = ['status' => '200', 'message' => 'El alumno se ha añadido.'];
+                    Log::channel('logapp')->notice('Ha añadido un nuevo alumnos', ['user_id' => $user['id']]);
                 }
             }
         }
@@ -81,10 +83,11 @@ class StudentController extends Controller
         $data = ['status' => '403'];
         $token = $request->header('token');
         if(!empty($token)) {
-            $user = User::select("token")->where('token', $token)->get()[0];
+            $user = User::select('id', 'token')->where('token', $token)->get()[0];
             if($user['token']) {
                 if(User::whereId($id)->update($request->all())) {
-                    $data = ['status' => '200', 'message' => 'El estudiante se ha actualizado.'];
+                    $data = ['status' => '200', 'message' => 'El alumno se ha actualizado.'];
+                    Log::channel('logapp')->notice('Ha actualizado el alumno #'.$id, ['user_id' => $user['id']]);
                 }
             }
         }
@@ -103,10 +106,11 @@ class StudentController extends Controller
         $data = ['status' => '403'];
         $token = $request->header('token');
         if(!empty($token)) {
-            $user = User::select("token")->where('token', $token)->get()[0];
+            $user = User::select('id', 'token')->where('token', $token)->get()[0];
             if($user['token']) {
                 if(User::whereId($id)->delete()) {
-                    $data = ['status' => '200', 'message' => 'El estudiante se ha eliminado.'];
+                    $data = ['status' => '200', 'message' => 'El alumno se ha eliminado.'];
+                    Log::channel('logapp')->notice('Ha eliminado el alumno #'.$id, ['user_id' => $user['id']]);
                 }
             }
         }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Models\Term;
 use App\Models\Career;
 use App\Models\User;
@@ -45,33 +46,41 @@ Route::name('admin')
   ->group(function () {
 
     Route::get('/dashboard', function() {
+        Log::channel('logapp')->info('Ha entrado a /admin/dashboard', ['user_id' => Auth::user()->id]);
         return view('/admin/dashboard');
     });
 
     Route::get('/terms', function() {
+        Log::channel('logapp')->info('Ha entrado a /admin/terms', ['user_id' => Auth::user()->id]);
         return view('/admin/terms');
     });
 
     Route::get('/terms/delete/{id}', function($id) {
-        $term = Term::where('active', '1')->findOrFail($id);
+        $term = Term::findOrFail($id);
+        Log::channel('logapp')->info('Ha entrado a /admin/terms/delete/'. $id, ['user_id' => Auth::user()->id]);
         return view('/admin/deletes/terms', ['term' => $term]);
     });
 
     Route::get('/careers', function() {
+        Log::channel('logapp')->info('Ha entrado a /admin/careers', ['user_id' => Auth::user()->id]);
         return view('/admin/careers');
     });
 
     Route::get('/careers/delete/{id}', function($id) {
-        $career = Career::where('active', '1')->findOrFail($id);
+        $career = Career::findOrFail($id);
+        Log::channel('logapp')->info('Ha entrado a /admin/careers/delete/'. $id, ['user_id' => Auth::user()->id]);
         return view('/admin/deletes/careers', ['career' => $career]);
     });
 
     Route::get('/students', function() {
-        return view('/admin/students');
+        $users = User::where('role', 'alumn')->paginate(20);
+        Log::channel('logapp')->info('Ha entrado a /admin/students', ['user_id' => Auth::user()->id]);
+        return view('/admin/students', ['users' => $users]);
     });
 
     Route::get('/students/delete/{id}', function($id) {
         $student = User::where('role', 'alumn')->findOrFail($id);
+        Log::channel('logapp')->info('Ha entrado a /admin/students/delete/'. $id, ['user_id' => Auth::user()->id]);
         return view('/admin/deletes/students', ['student' => $student]);
     });
 
@@ -84,6 +93,7 @@ Route::name('student')
   ->group(function () {
 
     Route::get('/dashboard', function() {
+        Log::channel('logapp')->info('Ha entrado a /student/dashboard', ['user_id' => Auth::user()->id]);
         return view('/student/dashboard');
     });
 
