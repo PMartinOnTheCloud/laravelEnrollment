@@ -29,7 +29,6 @@
 
 		<!-- Styles -->
 		<link href="{{ asset('css/main.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/boostrap.css') }}" rel="stylesheet">
 
 		<!-- Toastr alerts -->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
