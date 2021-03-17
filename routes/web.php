@@ -45,7 +45,7 @@ Route::name('admin')
     });
 
     Route::get('/terms/delete/{id}', function($id) {
-        $term = Term::where('active', '1')->findOrFail($id);
+        $term = Term::findOrFail($id);
         return view('/admin/deletes/terms', ['term' => $term]);
     });
 
@@ -54,12 +54,13 @@ Route::name('admin')
     });
 
     Route::get('/careers/delete/{id}', function($id) {
-        $career = Career::where('active', '1')->findOrFail($id);
+        $career = Career::findOrFail($id);
         return view('/admin/deletes/careers', ['career' => $career]);
     });
 
     Route::get('/students', function() {
-        return view('/admin/students');
+        $users = User::where('role', 'alumn')->paginate(20);
+        return view('/admin/students', ['users' => $users]);
     });
 
     Route::get('/students/delete/{id}', function($id) {

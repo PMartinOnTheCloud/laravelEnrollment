@@ -51,7 +51,7 @@
 			@endunless
 		</header>
 
-		<nav>
+		<nav class="header">
 			@if(Auth::check())
 			<h2>Menú</h2>
 			@if(Auth::user()->role == 'admin')

@@ -106,7 +106,7 @@ class CareerController extends Controller
         if(!empty($token)) {
             $user = User::select("token")->where('token', $token)->get()[0];
             if($user['token']) {
-                if(Career::whereId($id)->update(['active' => 0])) {
+                if(Career::whereId($id)->delete()) {
                     $data = ['status' => '200', 'message' => 'El ciclo se ha eliminado.'];
                 }
             }

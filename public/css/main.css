@@ -32,7 +32,7 @@ header div.username {
     padding: 4px;
 }
 
-nav {
+nav.header {
     background: var(--CoreSGrey);
     width: calc(100% - 83%);
     height: 100vh;
@@ -40,25 +40,25 @@ nav {
     box-sizing: border-box;
 }
 
-nav > ul {
+nav.header > ul {
     margin: 20px 0px 0px 0px;
     list-style: none;
     list-style-type: none;
     padding: 0;
 }
 
-nav > ul > li {
+nav.header > ul > li {
     margin-bottom: 10px;
 }
 
-nav > ul > li > a > .fas {
+nav.header > ul > li > a > .fas {
     padding: 4px;
     background: var(--CoreDBlue);
     color: var(--CoreWhite);
     border-radius: 5px;
 }
 
-nav > ul > li > a  {
+nav.header > ul > li > a  {
     color: var(--CoreDBlue);
 }
 
