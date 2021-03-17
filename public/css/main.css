@@ -37,6 +37,8 @@ header div.username {
     padding: 4px;
 }
 
+
+
 .adminav{
         background: var(--CoreSOrange);
         width: calc(100% - 83%);
@@ -53,6 +55,7 @@ nav {
     float: left;
     box-sizing: border-box;
     border-right: 0.1em var(--CoreSBlue)solid;
+    
 }
 
 nav > ul {
