@@ -26,6 +26,7 @@
 					<img src="{{ asset('images/esteveterradasbanner_landing.jpg') }}" class='mx-auto d-block img-fluid'>
 
 			</div>
+			<br>
 			<div class="row">
                 <div class="col-md-1">
                 </div>
