@@ -168,10 +168,14 @@ strong{
 }
 
 footer {
+  width: 100%;
+    height: 2em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0px;
     background: #214093;
-    color: white;
-    height: 80px;
-}
+    color: white;}
 
 footer > p {
     padding: 5px;
