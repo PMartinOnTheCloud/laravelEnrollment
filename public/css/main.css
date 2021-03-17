@@ -48,6 +48,15 @@ nav.adminav {
         border-right: 0.1em var(--CoreDOrange)solid;
 }
 
+nav.adminavcurso {
+
+        background: var(--CoreSOrange);
+        width: calc(100% - 83%);
+        height: 150vh;
+        float: left;
+        box-sizing: border-box;
+        border-right: 0.1em var(--CoreDOrange)solid;
+}
 
 nav.alumn {
     background: var(--CoreSGrey);
@@ -79,6 +88,32 @@ nav.alumn > ul > li > a > .fas {
 }
 
 nav.alumn > ul > li > a  {
+    color: var(--CoreDBlue);
+}
+
+nav.adminavcurso > ul {
+
+    margin: 20px 0px 0px 0px;
+    list-style: none;
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.7rem;
+    margin-left: 5px;
+}
+
+nav.adminavcurso > ul > li {
+    margin-bottom: 10px;
+
+}
+
+nav.adminavcurso > ul > li > a > .fas {
+    padding: 4px;
+    background: var(--CoreDBlue);
+    color: var(--CoreWhite);
+    border-radius: 5px;
+}
+
+nav.adminavcurso > ul > li > a  {
     color: var(--CoreDBlue);
 }
 
