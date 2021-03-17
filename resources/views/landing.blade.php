@@ -23,7 +23,7 @@
 		<div class="col-md-12">
 			<div class="row ">
 
-					<img src="{{ asset('images/esteveterradasbanner_landing.jpg') }}" class='mx-auto d-block img-fluid'>
+					<img src="{{ asset('images/esteveterradasbanner_landing.png') }}" class='mx-auto d-block img-fluid'>
 
 			</div>
 			<br>
