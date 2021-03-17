@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});
+
 function showDataInTable(params, data, elementToInsert, object, name) {
 
     $(elementToInsert).html('');
@@ -87,19 +91,19 @@ function updateObject(idItem, object, name) {
         },
         data: $('#itemForm-'+idItem).serializeArray(),
         success: (data) => {
-            changeStatusButton([
-                '#deleteButton-'+ idItem,
-                '#cancelButton-'+ idItem,
-                '#saveButton-'+ idItem
-            ]);
-            showButton(['#editButton-'+ idItem]);
-            changeLoadingOfButton('#saveButton-'+ idItem, 1);
-            hideButton(['#saveButton-'+ idItem, '#cancelButton-'+ idItem]);
-            toastr["success"]('Has editado el '+ name +' #'+ idItem +' correctamente.');
+			if (data['status'] == '200') {
+                toastr["success"]('Has editado el '+ name +' #'+ idItem +' correctamente.');
+            } else {
+                toastr["error"](data['message']);
+				$('#itemForm-'+ idItem).trigger("reset");
+            }
         },
         error: (data) => {
             toastr["error"]('Ha ocurrido un problema y no se ha podido editar el '+ name +' satisfactoriamente.  Vuelve a intentarlo en 5 minutos.');
-            changeStatusButton([
+            $('#itemForm-'+ idItem).trigger("reset");
+        },
+		complete: (data) => {
+			changeStatusButton([
                 '#deleteButton-'+ idItem,
                 '#cancelButton-'+ idItem,
                 '#saveButton-'+ idItem
@@ -107,8 +111,7 @@ function updateObject(idItem, object, name) {
             showButton(['#editButton-'+ idItem]);
             changeLoadingOfButton('#saveButton-'+ idItem, 1);
             hideButton(['#saveButton-'+ idItem, '#cancelButton-'+ idItem]);
-            $('#itemForm-'+ idItem).trigger("reset");
-        }
+		}
     });
 }
 

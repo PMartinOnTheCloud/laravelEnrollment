@@ -29,7 +29,6 @@
 
 		<!-- Styles -->
 		<link href="{{ asset('css/main.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/boostrap.css') }}" rel="stylesheet">
 
 		<!-- Toastr alerts -->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -53,7 +52,7 @@
 			@endunless
 		</header>
 
-
+		<nav class="header">
 			@if(Auth::check())
 			<h2 class="menu">Menú</h2>
 			@if(Auth::user()->role == 'admin')
@@ -104,9 +103,6 @@
 				<p><?php echo date('Y'); ?> &copy; Kobloard</p>
 			</footer>
 		</div>
-
-
-
 		<script>
 			toastr.options = {
 				"closeButton": true,

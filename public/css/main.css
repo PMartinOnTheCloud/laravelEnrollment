@@ -38,8 +38,8 @@ header div.username {
 }
 
 
+nav.adminav {
 
-.adminav{
         background: var(--CoreSOrange);
         width: calc(100% - 83%);
         height: 100vh;
@@ -47,6 +47,7 @@ header div.username {
         box-sizing: border-box;
         border-right: 0.1em var(--CoreDOrange)solid;
 }
+
 
 nav {
     background: var(--CoreSGrey);
@@ -63,12 +64,13 @@ nav > ul {
     list-style: none;
     list-style-type: none;
     padding: 0;
-}
+    font-size: 1.7rem;
+    margin-left: 5px;
+  }
 
 nav > ul > li {
     margin-bottom: 10px;
 }
-
 nav > ul > li > a > .fas {
     padding: 4px;
     background: var(--CoreDBlue);
@@ -77,6 +79,32 @@ nav > ul > li > a > .fas {
 }
 
 nav > ul > li > a  {
+    color: var(--CoreDBlue);
+}
+
+nav.adminav > ul {
+
+    margin: 20px 0px 0px 0px;
+    list-style: none;
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.7rem;
+    margin-left: 5px;
+}
+
+nav.adminav > ul > li {
+    margin-bottom: 10px;
+
+}
+
+nav.adminav > ul > li > a > .fas {
+    padding: 4px;
+    background: var(--CoreDBlue);
+    color: var(--CoreWhite);
+    border-radius: 5px;
+}
+
+nav.adminav > ul > li > a  {
     color: var(--CoreDBlue);
 }
 
