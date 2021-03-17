@@ -66,7 +66,7 @@ class TermController extends Controller
                     }
                 } else {
                     $data = ['status' => '404', 'message' => 'El curso no se ha podido añadir debido a que la fecha de comenzar debe de ser inferior a la de finalizar.'];
-                    Log::channel('logapp')->warning('Ha intentado crear un nuevo curso pero no ha podido debido a que ha añadido una fecha de comenzar más inferior a la de finalizar', ['user_id' => $user['id']]);
+                    Log::channel('logapp')->error('Ha intentado crear un nuevo curso pero no ha podido debido a que ha añadido una fecha de comenzar más inferior a la de finalizar', ['user_id' => $user['id']]);
                 }
             }
         }
@@ -121,9 +121,14 @@ class TermController extends Controller
         if(!empty($token)) {
             $user = User::select('id', 'token')->where('token', $token)->get()[0];
             if($user['token']) {
-                if(Term::whereId($id)->update($request->all())) {
-                    $data = ['status' => '200', 'message' => 'El curso se ha actualizado.'];
-                    Log::channel('logapp')->notice('Ha editado el curso #'. $id, ['user_id' => $user['id']]);
+				if($request->start < $request->end) {
+					if(Term::whereId($id)->update($request->all())) {
+						$data = ['status' => '200', 'message' => 'El curso se ha actualizado.'];
+						Log::channel('logapp')->notice('Ha editado el curso #'. $id, ['user_id' => $user['id']]);
+					}
+				} else {
+                    $data = ['status' => '404', 'message' => 'El curso no se ha podido añadir debido a que la fecha de comenzar debe de ser inferior a la de finalizar.'];
+                    Log::channel('logapp')->error('Ha intentado edit el curso #'.$id.' pero no ha podido debido a que ha añadido una fecha de comenzar más inferior a la de finalizar', ['user_id' => $user['id']]);
                 }
             }
         }

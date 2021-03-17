@@ -103,9 +103,6 @@
 				<p><?php echo date('Y'); ?> &copy; Kobloard</p>
 			</footer>
 		</div>
-
-
-
 		<script>
 			toastr.options = {
 				"closeButton": true,
