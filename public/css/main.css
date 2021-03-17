@@ -37,7 +37,7 @@ header div.username {
     padding: 4px;
 }
 
-.adminav{
+nav.adminav {
         background: var(--CoreSOrange);
         width: calc(100% - 83%);
         height: 100vh;
@@ -46,34 +46,25 @@ header div.username {
         border-right: 0.1em var(--CoreDOrange)solid;
 }
 
-nav.header {
-    background: var(--CoreSGrey);
-    width: calc(100% - 83%);
-    height: 100vh;
-    float: left;
-    box-sizing: border-box;
-    border-right: 0.1em var(--CoreSBlue)solid;
-}
-
-nav.header > ul {
+nav.adminav > ul {
     margin: 20px 0px 0px 0px;
     list-style: none;
     list-style-type: none;
     padding: 0;
 }
 
-nav.header > ul > li {
+nav.adminav > ul > li {
     margin-bottom: 10px;
 }
 
-nav.header > ul > li > a > .fas {
+nav.adminav > ul > li > a > .fas {
     padding: 4px;
     background: var(--CoreDBlue);
     color: var(--CoreWhite);
     border-radius: 5px;
 }
 
-nav.header > ul > li > a  {
+nav.adminav > ul > li > a  {
     color: var(--CoreDBlue);
 }
 
