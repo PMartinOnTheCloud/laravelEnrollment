@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Term;
 use App\Models\Career;
 use App\Models\User;
+use App\Models\LogSql;
 
 
 /*
